@@ -1,3 +1,165 @@
-<h1 class="text-3xl">
-    <?= __('Typography') ?>
-</h1>
+<h2 class="mt-20 mb-5 leading-6">ATOMS</h2>
+
+<div class="grid grid-cols-4">
+    <div class="flex flex-col">
+        <h3 class="mb-4 text-tertiary-25">Font Family</h3>
+        <p class="mb-4 font-body">Body font: Open Sans</p>
+        <p class="text-2xl leading-10 font-heading">Heading font: Anton</p>
+    </div>
+    <div class="flex flex-col gap-2">
+        <h3 class="text-tertiary-25">Text Colors</h3>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-text"></div>
+            <p>--text-color</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-white"></div>
+            <p>--text-color-invert</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-text-muted"></div>
+            <p>--text-color-muted</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-link"></div>
+            <p>--link-color</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-link-visited"></div>
+            <p>--link-color-visited</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-link-hover"></div>
+            <p>--link-color-hover</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="h-6 w-6 rounded-full bg-link-active"></div>
+            <p>--link-color-active</p>
+        </div>
+    </div>
+    <div class="flex flex-col gap-[6px]">
+        <h3 class="text-tertiary-25">Font Styles</h3>
+        <p class="leading-4 text-xxs">mobile/body/x-small-regular</p>
+        <p class="uppercase leading-4 text-xxs">Mobile/body/x-small-regular-UPPERCASE</p>
+        <p class="font-bold leading-4 text-xxs">mobile/body/x-small-bold</p>
+        <p class="font-bold uppercase leading-4 text-xxs">MOBILE/BODY/X-SMALL-BOLD-UPPERCASE</p>
+        <p class="text-xs leading-5">mobile/body/small-regular</p>
+        <p class="text-xs uppercase leading-6">mobile/body/small-regular-UPPERCASE</p>
+        <p class="text-xs font-bold leading-6">mobile/body/small-bold</p>
+        <p class="text-xs font-bold uppercase leading-6">mobile/body/small-bold-UPPERCASE</p>
+        <p class="text-sm leading-6">mobile/body/regular</p>
+        <p class="text-sm uppercase leading-6">mobile/body/regular-uppercase</p>
+        <p class="text-sm font-bold leading-6">mobile/body-bold</p>
+        <p class="text-sm font-bold uppercase leading-6">mobile/body-bold-uppercase</p>
+        <p class="text-xs font-bold uppercase leading-6 tracking-widest">menu/mobile/label-level-0</p>
+        <p class="text-xs uppercase leading-6 tracking-widest">menu/mobile/label-level-1</p>
+        <p class="text-xs uppercase leading-6 tracking-widest">menu/mobile/label-level-2</p>
+        <p class="text-xl leading-7">Product-price/mobile/label</p>
+        <p class="text-xl font-bold leading-7">Product-price/mobile/value</p>
+
+    </div>
+    <div class="flex flex-col gap-[6px]">
+        <h3>&nbsp;</h3>
+        <p class="text-xs">desktop/body/x-small-regular</p>
+        <p class="text-xs uppercase">desktop/body/x-small-regular-uppercase</p>
+        <p class="text-xs font-bold">desktop/body/x-small-bold</p>
+        <p class="text-xs uppercase font-bold">desktop/body/x-small-bold-uppercase</p>
+        <p class="text-sm leading-6">desktop/body/small-regular</p>
+        <p class="text-sm leading-6 uppercase">desktop/body/small-regular-uppercase</p>
+        <p class="text-sm leading-6 font-bold">desktop/body/small-bold</p>
+        <p class="text-sm leading-6 uppercase font-bold">desktop/body/small-bold-uppercase</p>
+        <p class="text-base leading-6">desktop/body/small-regular</p>
+        <p class="text-base leading-6 uppercase">desktop/body/small-regular-uppercase</p>
+        <p class="text-base leading-6 font-bold">desktop/body/small-bold</p>
+        <p class="text-base leading-6 uppercase font-bold">desktop/body/small-bold-uppercase</p>
+        <p class="text-sm font-bold uppercase leading-5 font-heading tracking-widest">menu/desktop/label-level-0</p>
+        <p class="text-sm uppercase leading-5 font-bold tracking-widest">menu/desktop/label-level-1</p>
+        <p class="text-sm uppercase leading-5 tracking-widest">menu/desktop/label-level-2</p>
+        <p class="text-2xl leading-7">Product-price/desktop/label</p>
+        <p class="text-2xl font-bold leading-7">Product-price/desktop/value</p>
+    </div>
+</div>
+
+<div class="grid grid-cols-2 mb-12">
+    <div>
+        <h3 class="mb-4">STATES</h3>
+        <div class="flex gap-14">
+            <a class="text-link">Text link default</a>
+            <a class="text-link-visited">Text link visited</a>
+            <a class="text-link-hover">Text link hover</a>
+            <a class="text-link-active">Text link active</a>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-4 mb-20">
+    <div>
+        <h3 class="mb-5">UNORDRED LIST</h3>
+        <p class="mb-4 text-sm">Apparently we had reached</p>
+        <ul>
+            <li>List item</li>
+            <li>List item</li>
+        </ul>
+    </div>
+    <div>
+        <h3 class="mb-5">ORDRED LIST</h3>
+        <p class="mb-4 text-sm">Apparently we had reached</p>
+        <ol>
+            <li>List item</li>
+            <li>List item</li>
+        </ol>
+    </div>
+</div>
+
+<div class="grid grid-cols-3">
+    <div class="max-w-[330px]">
+        <p class="text-sm mb-2">Mobile base font size: 14 / 24px</p>
+        <p class="text-sm">Vertical margins: 6px (0.25) / 12px (0.5) / 24px (1) / 30px (1.25) / 36 (1.5) / 48px (2)</p>
+        <h1 class="text-h1-mobile">The Spectacle Before Us Was Indeed Sublime.</h1>
+        <h2 class="text-h2-mobile">The Quick Brown Fox Jumps Over The Lazy Dog</h2>
+        <p class="text-sm">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h3 class="text-h3-mobile">The Quick Brown Fox Jumps Over The Lazy Dog</h3>
+        <p class="text-sm">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h4 class="text-h4-mobile">The Quick Brown Fox Jumps Over The Lazy Dog</h4>
+        <p class="text-sm">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h5 class="text-h5-mobile">The Quick Brown Fox Jumps Over The Lazy Dog</h5>
+        <p class="text-sm">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h6 class="text-h6-mobile">The Quick Brown Fox Jumps Over The Lazy Dog</h6>
+        <p class="text-sm">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+    </div>
+    <div class="col-span-2">
+        <p class="text-sm mb-2">Base font size: 16 / 24px</p>
+        <p class="text-sm">Vertical margins: 6px (0.25) / 12px (0.5) / 24px (1) / 30px (1.25) / 36 (1.5) / 48px (2)</p>
+        <h1 class="text-h1-desktop">The Spectacle Before Us Was Indeed Sublime.</h1>
+        <h2 class="text-h2-desktop">The Quick Brown Fox Jumps Over The Lazy Dog</h2>
+        <p class="text-base">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h3 class="text-h3-desktop">The Quick Brown Fox Jumps Over The Lazy Dog</h3>
+        <p class="text-base">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h4 class="text-h4-desktop">The Quick Brown Fox Jumps Over The Lazy Dog</h4>
+        <p class="text-base">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h5 class="text-h5-desktop">The Quick Brown Fox Jumps Over The Lazy Dog</h5>
+        <p class="text-base">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+        <h6 class="text-h6-desktop">The Quick Brown Fox Jumps Over The Lazy Dog</h6>
+        <p class="text-base">
+            Apparently we had reached a great height in the atmosphere, for the sky was a dead black, and the stars had ceased to twinkle. By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath was dished out, and the car seemed to float in the middle of an immense dark sphere, whose upper half was strewn with silver. Looking down into the dark gulf below, I could see a ruddy light.
+        </p>
+    </div>
+</div>
