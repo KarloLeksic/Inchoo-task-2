@@ -9,7 +9,26 @@ const hyvaModules = require('@hyva-themes/hyva-modules');
 module.exports = hyvaModules.mergeTailwindConfig({
   theme: {
     extend: {
+        colors: {
+            primary: {
+                "DEFAULT": "#12167A",
 
+            },
+            secondary: {
+                "DEFAULT": "#EC1D2E",
+                "90": "#D00505",
+            },
+            tertiary: {
+                "90": "#696969",
+                "60": "#828282",
+                "25": "#9C9C9C",
+                "10": "#CFCFCF",
+                "5": "#E8E8E8",
+            },
+            "success": "#32D08D",
+            "error": "#F14F39",
+            "warning": "#F1B239",
+        }
     }
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
