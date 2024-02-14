@@ -36,6 +36,11 @@ module.exports = hyvaModules.mergeTailwindConfig({
                 "hover": "#D41727",
                 "active": "#740D15",
             },
+            form: {
+                "border-err": "#EC1D2E",
+                "border-focus": "#4E4E4E",
+                "label": "#1A1A1A",
+            }
         },
         fontFamily: {
             "body": ['"Open Sans"', 'sans-serif'],

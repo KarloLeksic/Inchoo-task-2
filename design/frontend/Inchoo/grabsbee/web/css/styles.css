@@ -1905,25 +1905,136 @@ ol {
  * different styles can be found at https://tailwindcss-forms.vercel.app/
  **/
 
-.form-input,
-.form-email,
-.form-select,
-.form-multiselect,
-.form-textarea{
-  border-radius: 0.375rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+label{
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(26 26 26 / var(--tw-text-opacity));
 }
 
-.form-input:focus, .form-email:focus, .form-select:focus, .form-multiselect:focus, .form-textarea:focus{
+@media (min-width: 768px) {
+  label{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+input[type='text'], input[type='email'], input[type='number'], select{
+  height: 42px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 156 156 / var(--tw-border-opacity));
+}
+
+@media (min-width: 768px) {
+  input[type='text'], input[type='email'], input[type='number'], select{
+    height: 3rem;
+  }
+}
+
+input[type='text']:active, input[type='text']:focus, input[type='email']:active, input[type='email']:focus, input[type='number']:active, input[type='number']:focus, select:active, select:focus{
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(78 78 78 / var(--tw-border-opacity));
+  outline: 2px solid transparent;
+  outline-offset: 2px;
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-  --tw-ring-opacity: 0.5;
+}
+
+input[type='text']:invalid, input[type='email']:invalid, input[type='number']:invalid, select:invalid{
+  --tw-border-opacity: 1;
+  border-color: rgb(236 29 46 / var(--tw-border-opacity));
+}
+
+input[type='text']:disabled, input[type='email']:disabled, input[type='number']:disabled, select:disabled{
+  cursor: not-allowed;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 156 156 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(232 232 232 / var(--tw-bg-opacity));
+}
+
+.input-err{
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(241 79 57 / var(--tw-text-opacity));
+}
+
+/* Hide default radio buttons and checkboxes */
+
+input[type="radio"], input[type="checkbox"]{
+  display: none;
+}
+
+/* Style for the fake radio button */
+
+input[type="radio"] + label{
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 22px;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+input[type="radio"] + label::before{
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  height: 1rem;
+  width: 1rem;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  border-radius: 9999px;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 156 156 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-content: '';
+  content: var(--tw-content);
+}
+
+/* Add svg when checked */
+
+input[type="radio"]:checked + label:before {
+  background: url("../images/radio-bg.svg") center no-repeat;
+}
+
+/* Style for the fake checkbox */
+
+input[type="checkbox"] + label{
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 22px;
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+input[type="checkbox"] + label::before{
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  height: 1rem;
+  width: 1rem;
+  --tw-translate-y: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(156 156 156 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-content: '';
+  content: var(--tw-content);
+}
+
+/* Add svg when checked */
+
+input[type="checkbox"]:checked + label:before {
+  background: url("../images/checkbox-bg.svg") center no-repeat;
 }
 
 .page.messages{
@@ -3951,6 +4062,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   width: 41.666667%;
 }
 
+.w-52{
+  width: 13rem;
+}
+
 .w-56{
   width: 14rem;
 }
@@ -3981,6 +4096,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 
 .w-9{
   width: 2.25rem;
+}
+
+.w-\[320px\]{
+  width: 320px;
 }
 
 .w-auto{
@@ -4260,6 +4379,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   gap: 1rem;
 }
 
+.gap-5{
+  gap: 1.25rem;
+}
+
 .gap-6{
   gap: 1.5rem;
 }
@@ -4505,6 +4628,21 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 .bg-error{
   --tw-bg-opacity: 1;
   background-color: rgb(241 79 57 / var(--tw-bg-opacity));
+}
+
+.bg-form-border-err{
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 29 46 / var(--tw-bg-opacity));
+}
+
+.bg-form-border-focus{
+  --tw-bg-opacity: 1;
+  background-color: rgb(78 78 78 / var(--tw-bg-opacity));
+}
+
+.bg-form-label{
+  --tw-bg-opacity: 1;
+  background-color: rgb(26 26 26 / var(--tw-bg-opacity));
 }
 
 .bg-gray-100{
@@ -5199,6 +5337,11 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 .text-tertiary-25{
   --tw-text-opacity: 1;
   color: rgb(156 156 156 / var(--tw-text-opacity));
+}
+
+.text-tertiary-60{
+  --tw-text-opacity: 1;
+  color: rgb(130 130 130 / var(--tw-text-opacity));
 }
 
 .text-white{

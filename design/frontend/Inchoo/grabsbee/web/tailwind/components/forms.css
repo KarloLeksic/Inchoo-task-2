@@ -1,14 +1,69 @@
 /**
  * different styles can be found at https://tailwindcss-forms.vercel.app/
  **/
-.form-input,
-.form-email,
-.form-select,
-.form-multiselect,
-.form-textarea {
-    @apply border border-gray-300 rounded-md shadow-sm;
 
-    &:focus {
-        @apply ring ring-opacity-50;
+label {
+    @apply text-sm leading-6 text-form-label;
+
+    @screen md {
+        @apply text-base;
     }
 }
+
+input[type='text'], input[type='email'], input[type='number'], select {
+    @apply border-tertiary-25 h-[42px];
+
+    @screen md {
+        @apply h-12;
+    }
+
+    &:active, &:focus {
+        @apply border outline-none ring-0 border-form-border-focus;
+    }
+
+    &:invalid {
+        @apply border-form-border-err;
+    }
+
+    &:disabled {
+        @apply cursor-not-allowed bg-tertiary-5 border-tertiary-25;
+    }
+}
+
+.input-err {
+    @apply text-sm leading-6 text-error;
+}
+
+/* Hide default radio buttons and checkboxes */
+input[type="radio"], input[type="checkbox"] {
+    @apply hidden;
+}
+
+/* Style for the fake radio button */
+input[type="radio"] + label {
+    @apply relative inline-block cursor-pointer text-black pl-[22px];
+
+    &::before {
+        @apply content-[''] absolute left-0 top-2/4 -translate-y-1/2 w-4 h-4 rounded-full border border-tertiary-25 bg-white;
+    }
+}
+
+/* Add svg when checked */
+input[type="radio"]:checked + label:before {
+    background: url("../images/radio-bg.svg") center no-repeat;
+}
+
+/* Style for the fake checkbox */
+input[type="checkbox"] + label {
+    @apply relative inline-block cursor-pointer text-black pl-[22px];
+
+    &::before {
+        @apply content-[''] absolute left-0 top-2/4 -translate-y-1/2 w-4 h-4 border border-tertiary-25 bg-white;
+    }
+}
+
+/* Add svg when checked */
+input[type="checkbox"]:checked + label:before {
+    background: url("../images/checkbox-bg.svg") center no-repeat;
+}
+
