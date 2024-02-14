@@ -20,62 +20,90 @@ body {
     }
 
     h1 {
-        @apply my-12 text-h1-mobile md:text-h1-desktop;
+        @apply my-12 text-h1-mobile;
+
+        @screen md {
+            @apply text-h1-desktop;
+        }
     }
 
     h2 {
-        @apply my-9 text-h2-mobile md:text-h2-desktop;
+        @apply my-9 text-h2-mobile;
+
+        @screen md {
+            @apply text-h2-desktop;
+        }
     }
 
     h3 {
-        @apply my-7 text-h3-mobile md:text-h3-desktop;
+        @apply my-7 text-h3-mobile;
+
+        @screen md {
+            @apply text-h3-desktop;
+        }
     }
 
     h4 {
-        @apply my-6 text-h4-mobile md:text-h4-desktop;
+        @apply my-6 text-h4-mobile;
+
+        @screen md {
+            @apply text-h4-desktop;
+        }
     }
 
     h5 {
-        @apply my-3 text-h5-mobile md:text-h5-desktop;
+        @apply my-3 text-h5-mobile;
+
+        @screen md {
+            @apply text-h5-desktop;
+        }
     }
 
     h6 {
-        @apply text-h6-mobile my-[6px] md:text-h6-desktop;
+        @apply text-h6-mobile my-[6px];
+
+        @screen md {
+            @apply text-h6-desktop;
+        }
     }
 
     a {
         @apply transition-colors text-link;
+
+        &:hover {
+            @apply text-link-hover;
+        }
+
+        &:visited {
+            @apply text-link-visited;
+        }
+
+        &:active {
+            @apply text-link-active;
+        }
     }
 
-    a:hover {
-        @apply text-link-hover;
-    }
+    ul {
+        @apply ml-3;
 
-    a:visited {
-        @apply text-link-visited;
-    }
+        li {
+            @apply before:content-['•'] flex gap-[6px];
 
-    a:active {
-        @apply text-link-active;
-    }
-
-    ul{
-        @apply ml-3 text-sm leading-5;
-    }
-
-    ul li {
-        @apply before:content-['•'] flex gap-[6px];
+            &::marker {
+                @apply text-[8px];
+            }
+        }
     }
 
     li {
-        @apply mb-[6px];
-    }
-
-    ul li::marker {
-        @apply text-[8px]
+        @apply text-sm leading-5 mb-[6px];
     }
 
     ol {
-        list-style-type: decimal;
+        @apply list-decimal;
+
+        li {
+            @apply ml-7;
+        }
     }
 }
