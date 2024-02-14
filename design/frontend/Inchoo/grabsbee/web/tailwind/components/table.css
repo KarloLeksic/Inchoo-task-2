@@ -1,0 +1,29 @@
+@layer components {
+    th {
+        @apply text-sm font-bold uppercase leading-5 text-left;
+
+        @screen md {
+            @apply text-base leading-6;
+        }
+    }
+
+    td {
+        @apply text-sm text-text leading-5 text-left;
+
+        @screen md {
+            @apply text-base leading-6;
+        }
+    }
+
+    th, td {
+        @apply p-3;
+    }
+
+    tr:nth-child(even) {
+        @apply bg-tertiary-5;
+    }
+
+    tr:nth-child(odd) {
+        @apply bg-white;
+    }
+}
