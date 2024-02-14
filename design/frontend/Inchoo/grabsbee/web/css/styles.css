@@ -2037,6 +2037,57 @@ input[type="checkbox"]:checked + label:before {
   background: url("../images/checkbox-bg.svg") center no-repeat;
 }
 
+.search-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --tw-bg-opacity: 1;
+  background-color: rgb(18 22 122 / var(--tw-bg-opacity));
+}
+
+.search-container > * {
+  border: 0;
+  border-bottom: 1px solid #EC1D2E;
+}
+
+input[type='search']{
+  height: 42px;
+  width: 320px;
+  background-color: transparent;
+  padding-bottom: 0.5rem;
+  padding-left: 6px;
+}
+
+input[type='search']::-moz-placeholder{
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+input[type='search']::placeholder{
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+@media (min-width: 768px) {
+  input[type='search']{
+    height: 3rem;
+  }
+
+  input[type='search']::-moz-placeholder{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  input[type='search']::placeholder{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
 .page.messages{
   position: sticky;
   top: 0px;
@@ -3978,6 +4029,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   height: 2.25rem;
 }
 
+.h-\[101px\]{
+  height: 101px;
+}
+
 .h-auto{
   height: auto;
 }
@@ -4100,6 +4155,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 
 .w-\[320px\]{
   width: 320px;
+}
+
+.w-\[410px\]{
+  width: 410px;
 }
 
 .w-auto{
@@ -6203,6 +6262,10 @@ fieldset ~ fieldset{
 
   .md\:h-6{
     height: 1.5rem;
+  }
+
+  .md\:h-\[47px\]{
+    height: 47px;
   }
 
   .md\:h-auto{

@@ -67,3 +67,27 @@ input[type="checkbox"]:checked + label:before {
     background: url("../images/checkbox-bg.svg") center no-repeat;
 }
 
+.search-container {
+    @apply flex items-center justify-center bg-primary;
+}
+
+.search-container > * {
+    border: 0;
+    border-bottom: 1px solid #EC1D2E;
+}
+
+input[type='search'] {
+    @apply pb-2 h-[42px] w-[320px] bg-transparent pl-[6px];
+
+    &::placeholder {
+        @apply text-sm leading-6 text-white;
+    }
+
+    @screen md {
+        @apply h-12;
+
+        &::placeholder {
+            @apply text-base;
+        }
+    }
+}
