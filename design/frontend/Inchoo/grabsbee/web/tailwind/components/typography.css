@@ -92,6 +92,22 @@ body {
             &::marker {
                 @apply text-[8px];
             }
+
+            a {
+                @apply text-text;
+
+                &:hover {
+                    @apply text-black;
+                }
+
+                &:visited {
+                    @apply text-text;
+                }
+
+                &:active {
+                    @apply text-text;
+                }
+            }
         }
     }
 

@@ -21,12 +21,6 @@ use Hyva\Theme\ViewModel\Logo\LogoSizeResolver;
 $storeName = $block->getThemeName();
 
 $logoSizeResolver = $viewModels->require(LogoSizeResolver::class);
-$logoWidth = $logoSizeResolver && $logoSizeResolver->getWidth()
-    ? $logoSizeResolver->getWidth()
-    : $block->getLogoWidth();
-$logoHeight = $logoSizeResolver && $logoSizeResolver->getHeight()
-    ? $logoSizeResolver->getHeight()
-    : $block->getLogoHeight();
 
 /** @var \Hyva\Theme\ViewModel\Logo\LogoPathResolver $logoPathResolver */
 $logoPathResolver = $block->getData('logoPathResolver');
@@ -34,25 +28,17 @@ $logoSrc = $logoPathResolver && method_exists($logoPathResolver, 'getLogoSrc')
     ? $logoPathResolver->getLogoSrc($block->getData('logo_file'))
     : $block->getLogoSrc();
 ?>
-<div class="order-1 sm:order-2 lg:order-1 w-full pb-2 sm:w-auto sm:pb-0">
+<div class="flex-1">
     <a
-        class="flex items-center justify-center text-xl font-medium tracking-wide text-gray-800
-            no-underline hover:no-underline font-title"
+        class=""
         href="<?= $escaper->escapeUrl($block->getUrl('')) ?>"
         aria-label="<?= $escaper->escapeHtmlAttr(__('Go to Home page')) ?>"
     >
         <img
-            src="<?= $escaper->escapeUrl($logoSrc) ?>"
-            alt="<?= $escaper->escapeHtmlAttr($block->getLogoAlt() ? $block->getLogoAlt() : __('Store logo')) ?>"
-            <?= $logoWidth
-                ? 'width="' . $escaper->escapeHtmlAttr($logoWidth) . '"'
-                : 'width="200"'
-            ?>
-            <?= $logoHeight
-                ? 'height="' . $escaper->escapeHtmlAttr($logoHeight) . '"'
-                : 'height="150"'
-            ?>
-        />
+            src="<?= $block->getViewFileUrl('images/logo.svg'); ?>"
+            alt="?= $escaper->escapeHtmlAttr($block->getLogoAlt() ? $block->getLogoAlt() : __('Store logo')) ?>"
+            class="w-[97px] md:w-[194px]"
+        >
         <?php if (!$logoSrc): ?>
             <?= $escaper->escapeHtml($storeName) ?>
         <?php endif; ?>
