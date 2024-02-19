@@ -74,11 +74,11 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
     }
 </script>
 <div id="header"
-     class="relative z-30 w-full border-b shadow bg-primary border-container-lighter"
+     class="relative z-30 w-full shadow bg-primary"
      x-data="initHeader()"
      @private-content-loaded.window="getData(event.detail.data)"
 >
-    <div class="container flex items-center justify-between w-full py-5 pl-2 mx-auto mt-0">
+    <div class="container flex items-center justify-between w-full py-5 mx-auto mt-0">
         <!--Logo-->
         <?= $block->getChildHtml('logo'); ?>
 
@@ -109,7 +109,7 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
                 <a
             <?php endif ?>
                 id="menu-cart-icon"
-                class="relative inline-block no-underline sm:ml-3 hover:text-black"
+                class="relative inline-block no-underline hover:text-black"
                 x-ref="cartButton"
                 :aria-disabled="isCartEmpty()"
                 title="<?= $escaper->escapeHtmlAttr(__('Cart')) ?>"

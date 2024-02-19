@@ -6,3 +6,7 @@
     &:nth-child(2n + 1) {
     }
 }
+
+body {
+    background-color: lightgrey;
+}

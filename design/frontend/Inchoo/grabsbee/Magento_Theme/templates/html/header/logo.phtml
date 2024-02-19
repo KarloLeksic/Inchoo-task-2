@@ -37,7 +37,7 @@ $logoSrc = $logoPathResolver && method_exists($logoPathResolver, 'getLogoSrc')
         <img
             src="<?= $block->getViewFileUrl('images/logo.svg'); ?>"
             alt="?= $escaper->escapeHtmlAttr($block->getLogoAlt() ? $block->getLogoAlt() : __('Store logo')) ?>"
-            class="w-[97px] md:w-[194px]"
+            class="w-[97px] md:w-[194px] pl-2 sm:pl-0"
         >
         <?php if (!$logoSrc): ?>
             <?= $escaper->escapeHtml($storeName) ?>

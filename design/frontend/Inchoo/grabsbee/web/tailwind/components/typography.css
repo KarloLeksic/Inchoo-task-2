@@ -83,7 +83,7 @@ body {
         }
     }
 
-    ul {
+    nav ul {
         @apply ml-3;
 
         li {
@@ -102,10 +102,18 @@ body {
 
                 &:visited {
                     @apply text-text;
+
+                    @screen lg {
+                        @apply text-white;
+                    }
                 }
 
                 &:active {
                     @apply text-text;
+
+                    @screen lg {
+                        @apply text-white;
+                    }
                 }
             }
         }
