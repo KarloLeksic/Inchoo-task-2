@@ -13,73 +13,84 @@ use Hyva\Theme\ViewModel\Customer;
 use Hyva\Theme\ViewModel\StoreConfig;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
+use Hyva\Theme\ViewModel\SvgIcons;
+use Hyva\Theme\ViewModel\Navigation;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
 /** @var ViewModelRegistry $viewModels */
 
-/** @var Customer $customer */
-$customer = $viewModels->require(Customer::class);
-/** @var StoreConfig $storeConfig */
-$storeConfig = $viewModels->require(StoreConfig::class);
+/** @var SvgIcons $hyvaicons */
+$hyvaicons = $viewModels->require(SvgIcons::class);
+
+/** @var Navigation $viewModelNavigation */
+$viewModelNavigation = $viewModels->require(Navigation::class, $block);
+
+$menuItems = $viewModelNavigation->getNavigation(1);
 ?>
-<div class="md:w-1/2 w-full flex flex-wrap pr-4">
-    <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-8 xl:col-span-2">
-        <div>
-            <h2 class="text-md leading-5 font-semibold tracking-wider uppercase">
-                Company
+<div class="order-3 w-full px-3">
+    <div class="">
+        <div x-data="{
+                open: false,
+                toggle() {
+                    this.open = !this.open;
+                }
+            }
+        ">
+            <h2 class="my-2 flex items-center justify-between text-xs font-bold uppercase leading-6 tracking-wider text-white font-body"
+                @click="toggle()"
+            >
+                Contact us
+                <span :class="open ? 'rotate-180' : ''">
+                    <?= $hyvaicons->renderHtml('chevron-down', 'w-2 fill-white'); ?>
+                </span>
             </h2>
-            <ul class="mt-4">
-                <li>
-                    <a href="#" class="text-base leading-6">
-                        About
-                    </a>
+            <ul class="my-3 ml-4 ml-0 text-white"
+                x-show="open"
+            >
+                <li class="before:content-[''] flex items-center gap-0 mb-0">
+                    <?= $hyvaicons->renderHtml('location', 'w-3 mr-2 fill-white'); ?>
+                    Trg slobode 6
                 </li>
-                <li class="mt-4">
-                    <a href="<?= $escaper->escapeUrl($block->getUrl('customer/account')) ?>"
-                       class="text-base leading-6">
-                        <?= $escaper->escapeHtml(__('My Account')) ?>
-                    </a>
+                <li class="before:content-[''] flex items-center gap-0 mb-0">
+                    <?= $hyvaicons->renderHtml('phone', 'w-3 mr-2 fill-white'); ?>
+                    +385958811630
                 </li>
-                <?php if (!$customer->customerLoggedIn()): ?>
-                    <li class="mt-4">
-                        <a href="<?= $escaper->escapeUrl($block->getUrl('sales/guest/form')) ?>"
-                           class="text-base leading-6">
-                            <?= $escaper->escapeHtml(__('Orders and Returns')) ?>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <?php if ($storeConfig->getStoreConfig('catalog/seo/search_terms')): ?>
-                    <li class="mt-4">
-                        <a href="<?= $escaper->escapeUrl($block->getUrl('search/term/popular')) ?>"
-                           class="text-base leading-6">
-                            <?= $escaper->escapeHtml(__('Search Terms')) ?>
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <li class="mt-4">
-                    <a href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>"
-                       class="text-base leading-6">
-                        <?= $escaper->escapeHtml(__('Contact')) ?>
-                    </a>
+                <li class="before:content-[''] flex items-center gap-0 mb-0">
+                    <?= $hyvaicons->renderHtml('mail', 'w-3 mr-2 fill-white'); ?>
+                    filip.svetlicic@gmail.com
                 </li>
             </ul>
         </div>
-        <div>
-            <h2 class="text-md leading-5 font-semibold tracking-wider uppercase">
-                Legal
+        <div x-data="{
+                open: false,
+                toggle() {
+                    this.open = !this.open;
+                }
+            }
+        ">
+            <h2 class="my-2 flex items-center justify-between text-xs font-bold uppercase leading-6 tracking-wider text-white font-body"
+                @click="toggle()"
+            >
+                Categories
+                <span :class="open ? 'rotate-180' : ''">
+                    <?= $hyvaicons->renderHtml('chevron-down', 'w-2 fill-white'); ?>
+                </span>
             </h2>
-            <ul class="mt-4">
-                <li class="mt-4">
-                    <a href="#" class="text-base leading-6">
-                        Privacy
+            <ul class="my-3 ml-4 ml-0"
+                x-show="open"
+            >
+                <?php foreach ($menuItems as $index => $menuItem): ?>
+                <li class="mb-0">
+                    <a
+                        href="<?= $escaper->escapeUrl($menuItem['url']) ?>"
+                        title="<?= $escaper->escapeHtmlAttr($menuItem['name']) ?>"
+                        class="leading-6 text-white visited:text-white"
+                    >
+                        <?= $escaper->escapeHtml($menuItem['name']) ?>
                     </a>
                 </li>
-                <li class="mt-4">
-                    <a href="#" class="text-base leading-6">
-                        Terms and Conditions
-                    </a>
-                </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>
