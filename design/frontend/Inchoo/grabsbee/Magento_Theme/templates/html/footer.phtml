@@ -14,18 +14,17 @@ use Magento\Framework\Escaper;
 /** @var Template $block */
 /** @var Escaper $escaper */
 ?>
+<div class="bg-secondary">
+    <div class="container mx-auto sm:flex sm:items-center sm:justify-center">
+        <?= $block->getBlockHtml('form.subscribe') ?>
+    </div>
+</div>
 <div class="bg-primary">
-    <div class="container mx-auto">
-        <div class="flex flex-wrap">
-            <?php foreach ($block->getChildNames() as $childName): ?>
-                <?= $childName !== 'footer-copyright' ? $block->getBlockHtml($childName) : '' ?>
-            <?php endforeach; ?>
-        </div>
-    </div>
-    <div class="bg-black flex items-center justify-center">
-        <p class="leading-6 py-2 text-white">
-            <?= $block->getChildHtml('copyright') ?>
-        </p>
-    </div>
+    <?= $block->getChildHtml('footer-static-links') ?>
+</div>
+<div class="bg-black flex items-center justify-center">
+    <p class="leading-6 py-2 sm:py-3 text-white text-xs">
+        <?= $block->getChildHtml('copyright') ?>
+    </p>
 </div>
 

@@ -9,8 +9,6 @@
 declare(strict_types=1);
 
 use Hyva\Theme\Model\ViewModelRegistry;
-use Hyva\Theme\ViewModel\Customer;
-use Hyva\Theme\ViewModel\StoreConfig;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
 use Hyva\Theme\ViewModel\SvgIcons;
@@ -28,24 +26,35 @@ $viewModelNavigation = $viewModels->require(Navigation::class, $block);
 
 $menuItems = $viewModelNavigation->getNavigation(1);
 ?>
-<div class="order-3 w-full px-3">
-    <div class="">
+<div class="order-3 w-full px-3 py-2">
+    <div class="sm:flex sm:items-start sm:justify-center">
         <div x-data="{
-                open: false,
+                open: true,
+                alwaysShow: window.innerWidth > 640,
                 toggle() {
-                    this.open = !this.open;
+                    if(this.alwaysShow) {
+                        this.open = true;
+                    } else {
+                        this.open = !this.open;
+                    }
                 }
             }
-        ">
-            <h2 class="my-2 flex items-center justify-between text-xs font-bold uppercase leading-6 tracking-wider text-white font-body"
+        "
+             x-init="toggle()"
+             @resize.window="alwaysShow = window.innerWidth > 640; open = alwaysShow ? true : false"
+             class="sm:order-2 sm:w-[204px]"
+        >
+            <h2 class="mb-4 sm:mb-6 mt-0 flex items-center justify-between text-xs font-bold uppercase leading-6 tracking-wider text-white font-body sm:mt-4 sm:text-sm sm:leading-6"
                 @click="toggle()"
             >
                 Contact us
-                <span :class="open ? 'rotate-180' : ''">
+                <span  class="sm:hidden"
+                       :class="open ? 'rotate-180' : ''"
+                >
                     <?= $hyvaicons->renderHtml('chevron-down', 'w-2 fill-white'); ?>
                 </span>
             </h2>
-            <ul class="my-3 ml-4 ml-0 text-white"
+            <ul class="my-3 ml-4 sm:ml-0 ml-0 text-white"
                 x-show="open"
             >
                 <li class="before:content-[''] flex items-center gap-0 mb-0">
@@ -63,21 +72,32 @@ $menuItems = $viewModelNavigation->getNavigation(1);
             </ul>
         </div>
         <div x-data="{
-                open: false,
+                open: true,
+                alwaysShow: window.innerWidth > 640,
                 toggle() {
-                    this.open = !this.open;
+                    if(this.alwaysShow) {
+                        this.open = true;
+                    } else {
+                        this.open = !this.open;
+                    }
                 }
             }
-        ">
-            <h2 class="my-2 flex items-center justify-between text-xs font-bold uppercase leading-6 tracking-wider text-white font-body"
+        "
+             x-init="toggle()"
+             class="sm:w-[204px] sm:mr-[154px]"
+             @resize.window="alwaysShow = window.innerWidth > 640; open = alwaysShow ? true : false"
+        >
+            <h2 class="mt-0 mb-0 flex items-center justify-between text-xs font-bold uppercase leading-6 tracking-wider text-white font-body sm:mt-4 sm:mb-6 sm:text-sm sm:leading-6"
                 @click="toggle()"
             >
                 Categories
-                <span :class="open ? 'rotate-180' : ''">
+                <span class="sm:hidden"
+                      :class="open ? 'rotate-180' : ''"
+                >
                     <?= $hyvaicons->renderHtml('chevron-down', 'w-2 fill-white'); ?>
                 </span>
             </h2>
-            <ul class="my-3 ml-4 ml-0"
+            <ul class="my-3 ml-4 ml-0 sm:ml-0"
                 x-show="open"
             >
                 <?php foreach ($menuItems as $index => $menuItem): ?>

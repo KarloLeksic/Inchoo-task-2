@@ -3848,6 +3848,16 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   margin-bottom: 2rem;
 }
 
+.my-0{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.my-10{
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
 .-ml-px{
   margin-left: -1px;
 }
@@ -6131,6 +6141,11 @@ fieldset ~ fieldset{
     grid-column: span 6 / span 6;
   }
 
+  .sm\:my-7{
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
+  }
+
   .sm\:mb-0{
     margin-bottom: 0px;
   }
@@ -6151,12 +6166,56 @@ fieldset ~ fieldset{
     margin-top: 0px;
   }
 
+  .sm\:mr-3{
+    margin-right: 0.75rem;
+  }
+
+  .sm\:mb-2{
+    margin-bottom: 0.5rem;
+  }
+
+  .sm\:mb-6{
+    margin-bottom: 1.5rem;
+  }
+
+  .sm\:ml-0{
+    margin-left: 0px;
+  }
+
+  .sm\:ml-\[154px\]{
+    margin-left: 154px;
+  }
+
+  .sm\:mr-\[154px\]{
+    margin-right: 154px;
+  }
+
+  .sm\:mt-4{
+    margin-top: 1rem;
+  }
+
+  .sm\:mt-12{
+    margin-top: 3rem;
+  }
+
+  .sm\:mb-12{
+    margin-bottom: 3rem;
+  }
+
+  .sm\:mt-7{
+    margin-top: 1.75rem;
+  }
+
   .sm\:block{
     display: block;
   }
 
   .sm\:flex{
     display: flex;
+  }
+
+  .sm\:hidden{
+    display: none;
   }
 
   .sm\:w-1\/2{
@@ -6173,6 +6232,30 @@ fieldset ~ fieldset{
 
   .sm\:w-48{
     width: 12rem;
+  }
+
+  .sm\:w-\[130px\]{
+    width: 130px;
+  }
+
+  .sm\:w-\[\]{
+    width: ;
+  }
+
+  .sm\:w-\[150px\]{
+    width: 150px;
+  }
+
+  .sm\:w-\[200px\]{
+    width: 200px;
+  }
+
+  .sm\:w-\[360px\]{
+    width: 360px;
+  }
+
+  .sm\:w-\[204px\]{
+    width: 204px;
   }
 
   .sm\:table-fixed{
@@ -6195,8 +6278,28 @@ fieldset ~ fieldset{
     align-items: flex-start;
   }
 
+  .sm\:items-center{
+    align-items: center;
+  }
+
+  .sm\:justify-center{
+    justify-content: center;
+  }
+
+  .sm\:justify-between{
+    justify-content: space-between;
+  }
+
+  .sm\:justify-evenly{
+    justify-content: space-evenly;
+  }
+
   .sm\:gap-8{
     gap: 2rem;
+  }
+
+  .sm\:p-0{
+    padding: 0px;
   }
 
   .sm\:px-6{
@@ -6209,8 +6312,21 @@ fieldset ~ fieldset{
     padding-bottom: 0.25rem;
   }
 
+  .sm\:py-3{
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
   .sm\:pl-0{
     padding-left: 0px;
+  }
+
+  .sm\:pb-5{
+    padding-bottom: 1.25rem;
+  }
+
+  .sm\:pt-0{
+    padding-top: 0px;
   }
 
   .sm\:text-right{
@@ -6220,6 +6336,20 @@ fieldset ~ fieldset{
   .sm\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+
+  .sm\:text-xs{
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .sm\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .sm\:leading-6{
+    line-height: 1.5rem;
   }
 
   .sm\:duration-700{
@@ -6373,6 +6503,10 @@ fieldset ~ fieldset{
     width: 100%;
   }
 
+  .md\:max-w-\[617px\]{
+    max-width: 617px;
+  }
+
   .md\:shrink-0{
     flex-shrink: 0;
   }
@@ -6416,6 +6550,10 @@ fieldset ~ fieldset{
 
   .md\:justify-end{
     justify-content: flex-end;
+  }
+
+  .md\:justify-center{
+    justify-content: center;
   }
 
   .md\:justify-between{
