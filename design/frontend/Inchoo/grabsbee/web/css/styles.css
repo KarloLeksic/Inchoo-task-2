@@ -2127,7 +2127,6 @@ input[type="checkbox"]:checked + label:before {
 
 input[type='search']{
   height: 42px;
-  width: 320px;
   background-color: transparent;
   padding-bottom: 0.5rem;
   padding-left: 6px;
@@ -2145,6 +2144,15 @@ input[type='search']::placeholder{
   line-height: 1.5rem;
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+input[type='search']:active, input[type='search']:focus{
+  border-style: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
 @media (min-width: 768px) {
@@ -3848,16 +3856,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   margin-bottom: 2rem;
 }
 
-.my-0{
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-.my-10{
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-
 .-ml-px{
   margin-left: -1px;
 }
@@ -3944,6 +3942,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 
 .ml-2{
   margin-left: 0.5rem;
+}
+
+.ml-24{
+  margin-left: 6rem;
 }
 
 .ml-3{
@@ -4796,6 +4798,36 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 .border-red-500{
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
+}
+
+.border-secondary{
+  --tw-border-opacity: 1;
+  border-color: rgb(236 29 46 / var(--tw-border-opacity));
+}
+
+.border-tertiary-25{
+  --tw-border-opacity: 1;
+  border-color: rgb(156 156 156 / var(--tw-border-opacity));
+}
+
+.border-tertiary-90{
+  --tw-border-opacity: 1;
+  border-color: rgb(105 105 105 / var(--tw-border-opacity));
+}
+
+.border-tertiary-5{
+  --tw-border-opacity: 1;
+  border-color: rgb(232 232 232 / var(--tw-border-opacity));
+}
+
+.border-b-secondary{
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(236 29 46 / var(--tw-border-opacity));
+}
+
+.border-t-secondary{
+  --tw-border-opacity: 1;
+  border-top-color: rgb(236 29 46 / var(--tw-border-opacity));
 }
 
 .bg-black{
@@ -6056,10 +6088,6 @@ fieldset ~ fieldset{
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
-.focus\:border-transparent:focus{
-  border-color: transparent;
-}
-
 .focus\:bg-white:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -6120,6 +6148,12 @@ fieldset ~ fieldset{
   opacity: 0.75;
 }
 
+@media not all and (min-width: 640px){
+  .max-sm\:order-2{
+    order: 2;
+  }
+}
+
 @media (min-width: 640px){
   .sm\:order-1{
     order: 1;
@@ -6146,28 +6180,13 @@ fieldset ~ fieldset{
     margin-bottom: 1.75rem;
   }
 
+  .sm\:my-12{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
   .sm\:mb-0{
     margin-bottom: 0px;
-  }
-
-  .sm\:ml-2{
-    margin-left: 0.5rem;
-  }
-
-  .sm\:ml-3{
-    margin-left: 0.75rem;
-  }
-
-  .sm\:mr-8{
-    margin-right: 2rem;
-  }
-
-  .sm\:mt-0{
-    margin-top: 0px;
-  }
-
-  .sm\:mr-3{
-    margin-right: 0.75rem;
   }
 
   .sm\:mb-2{
@@ -6182,28 +6201,40 @@ fieldset ~ fieldset{
     margin-left: 0px;
   }
 
-  .sm\:ml-\[154px\]{
-    margin-left: 154px;
+  .sm\:ml-2{
+    margin-left: 0.5rem;
+  }
+
+  .sm\:ml-3{
+    margin-left: 0.75rem;
+  }
+
+  .sm\:mr-3{
+    margin-right: 0.75rem;
+  }
+
+  .sm\:mr-8{
+    margin-right: 2rem;
   }
 
   .sm\:mr-\[154px\]{
     margin-right: 154px;
   }
 
-  .sm\:mt-4{
-    margin-top: 1rem;
+  .sm\:mt-0{
+    margin-top: 0px;
   }
 
   .sm\:mt-12{
     margin-top: 3rem;
   }
 
-  .sm\:mb-12{
-    margin-bottom: 3rem;
+  .sm\:mt-4{
+    margin-top: 1rem;
   }
 
-  .sm\:mt-7{
-    margin-top: 1.75rem;
+  .sm\:ml-24{
+    margin-left: 6rem;
   }
 
   .sm\:block{
@@ -6238,24 +6269,12 @@ fieldset ~ fieldset{
     width: 130px;
   }
 
-  .sm\:w-\[\]{
-    width: ;
-  }
-
-  .sm\:w-\[150px\]{
-    width: 150px;
-  }
-
-  .sm\:w-\[200px\]{
-    width: 200px;
+  .sm\:w-\[204px\]{
+    width: 204px;
   }
 
   .sm\:w-\[360px\]{
     width: 360px;
-  }
-
-  .sm\:w-\[204px\]{
-    width: 204px;
   }
 
   .sm\:table-fixed{
@@ -6286,14 +6305,6 @@ fieldset ~ fieldset{
     justify-content: center;
   }
 
-  .sm\:justify-between{
-    justify-content: space-between;
-  }
-
-  .sm\:justify-evenly{
-    justify-content: space-evenly;
-  }
-
   .sm\:gap-8{
     gap: 2rem;
   }
@@ -6312,17 +6323,22 @@ fieldset ~ fieldset{
     padding-bottom: 0.25rem;
   }
 
+  .sm\:py-12{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
   .sm\:py-3{
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
   }
 
-  .sm\:pl-0{
-    padding-left: 0px;
-  }
-
   .sm\:pb-5{
     padding-bottom: 1.25rem;
+  }
+
+  .sm\:pl-0{
+    padding-left: 0px;
   }
 
   .sm\:pt-0{
@@ -6336,11 +6352,6 @@ fieldset ~ fieldset{
   .sm\:text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
-  }
-
-  .sm\:text-xs{
-    font-size: 0.75rem;
-    line-height: 1rem;
   }
 
   .sm\:text-sm{
@@ -6550,10 +6561,6 @@ fieldset ~ fieldset{
 
   .md\:justify-end{
     justify-content: flex-end;
-  }
-
-  .md\:justify-center{
-    justify-content: center;
   }
 
   .md\:justify-between{
@@ -6816,18 +6823,9 @@ fieldset ~ fieldset{
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-
-  .lg\:text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
 }
 
 @media (min-width: 1280px){
-  .xl\:col-span-2{
-    grid-column: span 2 / span 2;
-  }
-
   .xl\:w-1\/3{
     width: 33.333333%;
   }

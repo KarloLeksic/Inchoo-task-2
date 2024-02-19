@@ -11,6 +11,8 @@ declare(strict_types=1);
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
 use Magento\Search\Helper\Data as SearchHelper;
+use Hyva\Theme\ViewModel\SvgIcons;
+
 
 // phpcs:disable Magento2.Templates.ThisInTemplate.FoundThis
 // phpcs:disable Magento2.Templates.ThisInTemplate.FoundHelper
@@ -20,6 +22,9 @@ use Magento\Search\Helper\Data as SearchHelper;
 /** @var SearchHelper $helper */
 
 $helper = $this->helper(SearchHelper::class);
+
+/** @var SvgIcons $hyvaicons */
+$hyvaicons = $viewModels->require(SvgIcons::class);
 ?>
 <script>
     'use strict';
@@ -75,55 +80,60 @@ $helper = $this->helper(SearchHelper::class);
         }
     }
 </script>
-<div class="container py-2 mx-auto text-black" x-data="initMiniSearch()">
-     <form class="form minisearch" id="search_mini_form" x-ref="form" @submit.prevent="search()"
-          action="<?= $escaper->escapeUrl($helper->getResultUrl()) ?>" method="get" role="search">
-        <label class="hidden" for="search" data-role="minisearch-label">
-            <span><?= $escaper->escapeHtml(__('Search')) ?></span>
-        </label>
-        <input id="search"
-               x-ref="searchInput"
-               type="search"
-               autocomplete="off"
-               name="<?= $escaper->escapeHtmlAttr($helper->getQueryParamName()) ?>"
-               value="<?= /** @noEscape */ $helper->getEscapedQueryText() ?>"
-               placeholder="<?= $escaper->escapeHtmlAttr(__('Search entire store here...')) ?>"
-               maxlength="<?= $escaper->escapeHtmlAttr($helper->getMaxQueryLength()) ?>"
-               class="w-full p-2 text-lg leading-normal transition appearance-none text-grey-800
-                focus:outline-none focus:border-transparent lg:text-xl"
-               @focus.once="suggest"
-               @input.debounce.300="suggest"
-               @keydown.arrow-down.prevent="focusElement($root.querySelector('[tabindex]'))"
-               @search-open.window.debounce.10="
-                    $el.focus()
-                    $el.select()
-               "
-        />
-         <template x-if="suggestions.length > 0">
-             <div class="w-full leading-normal transition appearance-none text-grey-800 flex flex-col mt-1">
-                 <template x-for="suggestion in suggestions">
-                     <div class="flex justify-between p-2 bg-container-lighter even:bg-container mb-1 cursor-pointer
-                                 border border-container hover:bg-container-darker"
-                          tabindex="0"
-                          @click="search(suggestion.title)"
-                          @keydown.enter="search(suggestion.title)"
-                          @keydown.arrow-up.prevent="
-                              focusElement($event.target.previousElementSibling) || $refs.searchInput.focus()
-                          "
-                          @keydown.arrow-down.prevent="focusElement($event.target.nextElementSibling)"
-                     >
-                         <span x-text="suggestion.title"></span>
-                         <span x-text="suggestion.num_results"></span>
-                     </div>
-                 </template>
-             </div>
-         </template>
-        <button type="submit"
-                title="<?= $escaper->escapeHtml(__('Search')) ?>"
-                class="action search sr-only"
-                aria-label="Search"
-        >
-            <?= $escaper->escapeHtml(__('Search')) ?>
-        </button>
-    </form>
+<div class="container mx-auto flex flex-col sm:flex-row items-center justify-center mt-6 mb-12 sm:my-12" x-data="initMiniSearch()">
+    <div class="search-container flex-1 max-sm:order-2 w-full px-3 sm:p-0 ">
+         <form class="form minisearch flex items-center justify-center w-full" id="search_mini_form" x-ref="form" @submit.prevent="search()"
+              action="<?= $escaper->escapeUrl($helper->getResultUrl()) ?>" method="get" role="search">
+            <label class="mb-0" for="search" data-role="minisearch-label">
+                <?= $hyvaicons->renderHtml('search', 'w-3'); ?>
+            </label>
+            <input id="search"
+                   x-ref="searchInput"
+                   type="search"
+                   autocomplete="off"
+                   name="<?= $escaper->escapeHtmlAttr($helper->getQueryParamName()) ?>"
+                   value="<?= /** @noEscape */ $helper->getEscapedQueryText() ?>"
+                   placeholder="<?= $escaper->escapeHtmlAttr(__('Search entire store here...')) ?>"
+                   maxlength="<?= $escaper->escapeHtmlAttr($helper->getMaxQueryLength()) ?>"
+                   class="border-0 w-full"
+                   @focus.once="suggest"
+                   @input.debounce.300="suggest"
+                   @keydown.arrow-down.prevent="focusElement($root.querySelector('[tabindex]'))"
+                   @search-open.window.debounce.10="
+                        $el.focus()
+                        $el.select()
+                   "
+            />
+             <template x-if="suggestions.length > 0">
+                 <div class="w-full leading-normal transition appearance-none text-grey-800 flex flex-col mt-1">
+                     <template x-for="suggestion in suggestions">
+                         <div class="flex justify-between p-2 bg-container-lighter even:bg-container mb-1 cursor-pointer
+                                     border border-container hover:bg-container-darker"
+                              tabindex="0"
+                              @click="search(suggestion.title)"
+                              @keydown.enter="search(suggestion.title)"
+                              @keydown.arrow-up.prevent="
+                                  focusElement($event.target.previousElementSibling) || $refs.searchInput.focus()
+                              "
+                              @keydown.arrow-down.prevent="focusElement($event.target.nextElementSibling)"
+                         >
+                             <span x-text="suggestion.title"></span>
+                             <span x-text="suggestion.num_results"></span>
+                         </div>
+                     </template>
+                 </div>
+             </template>
+            <button type="submit"
+                    title="<?= $escaper->escapeHtml(__('Search')) ?>"
+                    class="action search sr-only"
+                    aria-label="Search"
+            >
+                <?= $escaper->escapeHtml(__('Search')) ?>
+            </button>
+        </form>
+    </div>
+    <button class="flex text-white items-center justify-center sm:ml-24 mb-4 sm:mb-0" @click="searchOpen = false">
+        Close
+        <?= $hyvaicons->renderHtml('close-menu', 'w-3 fill-white ml-2'); ?>
+    </button>
 </div>

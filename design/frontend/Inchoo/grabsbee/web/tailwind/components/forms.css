@@ -77,10 +77,14 @@ input[type="checkbox"]:checked + label:before {
 }
 
 input[type='search'] {
-    @apply pb-2 h-[42px] w-[320px] bg-transparent pl-[6px];
+    @apply pb-2 h-[42px] bg-transparent pl-[6px];
 
     &::placeholder {
         @apply text-sm leading-6 text-white;
+    }
+
+    &:active, &:focus {
+        @apply border-none outline-none ring-0;
     }
 
     @screen md {
