@@ -3643,6 +3643,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   bottom: 0px;
 }
 
+.bottom-4{
+  bottom: 1rem;
+}
+
 .left-0{
   left: 0px;
 }
@@ -3944,10 +3948,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   margin-left: 0.5rem;
 }
 
-.ml-24{
-  margin-left: 6rem;
-}
-
 .ml-3{
   margin-left: 0.75rem;
 }
@@ -4136,6 +4136,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   height: 12px;
 }
 
+.h-\[168px\]{
+  height: 168px;
+}
+
 .h-auto{
   height: auto;
 }
@@ -4258,6 +4262,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 
 .w-\[320px\]{
   width: 320px;
+}
+
+.w-\[336px\]{
+  width: 336px;
 }
 
 .w-\[410px\]{
@@ -4540,6 +4548,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   justify-content: space-evenly;
 }
 
+.justify-items-center{
+  justify-items: center;
+}
+
 .gap-0{
   gap: 0px;
 }
@@ -4800,34 +4812,9 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
 }
 
-.border-secondary{
-  --tw-border-opacity: 1;
-  border-color: rgb(236 29 46 / var(--tw-border-opacity));
-}
-
-.border-tertiary-25{
-  --tw-border-opacity: 1;
-  border-color: rgb(156 156 156 / var(--tw-border-opacity));
-}
-
 .border-tertiary-90{
   --tw-border-opacity: 1;
   border-color: rgb(105 105 105 / var(--tw-border-opacity));
-}
-
-.border-tertiary-5{
-  --tw-border-opacity: 1;
-  border-color: rgb(232 232 232 / var(--tw-border-opacity));
-}
-
-.border-b-secondary{
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(236 29 46 / var(--tw-border-opacity));
-}
-
-.border-t-secondary{
-  --tw-border-opacity: 1;
-  border-top-color: rgb(236 29 46 / var(--tw-border-opacity));
 }
 
 .bg-black{
@@ -5009,6 +4996,11 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 .object-contain{
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .object-center{
@@ -5735,10 +5727,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 .table-row-items > div.table-row-item:nth-child(2n + 1) {
 }
 
-body {
-  background-color: lightgrey;
-}
-
 .category-view .sidebar .block.filter {
 }
 
@@ -5901,6 +5889,48 @@ fieldset ~ fieldset{
   .flex-columns-wrapper{
     flex-direction: row;
   }
+}
+
+.before\:absolute::before{
+  content: var(--tw-content);
+  position: absolute;
+}
+
+.before\:left-0::before{
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.before\:top-0::before{
+  content: var(--tw-content);
+  top: 0px;
+}
+
+.before\:h-full::before{
+  content: var(--tw-content);
+  height: 100%;
+}
+
+.before\:w-full::before{
+  content: var(--tw-content);
+  width: 100%;
+}
+
+.before\:bg-gradient-to-t::before{
+  content: var(--tw-content);
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+.before\:from-\[\#00000068\]::before{
+  content: var(--tw-content);
+  --tw-gradient-from: #00000068;
+  --tw-gradient-to: rgb(0 0 0 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.before\:to-transparent::before{
+  content: var(--tw-content);
+  --tw-gradient-to: transparent;
 }
 
 .before\:content-\[\'\'\]::before{
@@ -6175,14 +6205,14 @@ fieldset ~ fieldset{
     grid-column: span 6 / span 6;
   }
 
-  .sm\:my-7{
-    margin-top: 1.75rem;
-    margin-bottom: 1.75rem;
-  }
-
   .sm\:my-12{
     margin-top: 3rem;
     margin-bottom: 3rem;
+  }
+
+  .sm\:my-7{
+    margin-top: 1.75rem;
+    margin-bottom: 1.75rem;
   }
 
   .sm\:mb-0{
@@ -6203,6 +6233,10 @@ fieldset ~ fieldset{
 
   .sm\:ml-2{
     margin-left: 0.5rem;
+  }
+
+  .sm\:ml-24{
+    margin-left: 6rem;
   }
 
   .sm\:ml-3{
@@ -6233,8 +6267,16 @@ fieldset ~ fieldset{
     margin-top: 1rem;
   }
 
-  .sm\:ml-24{
-    margin-left: 6rem;
+  .sm\:mt-6{
+    margin-top: 1.5rem;
+  }
+
+  .sm\:mb-12{
+    margin-bottom: 3rem;
+  }
+
+  .sm\:mb-8{
+    margin-bottom: 2rem;
   }
 
   .sm\:block{
@@ -6247,6 +6289,10 @@ fieldset ~ fieldset{
 
   .sm\:hidden{
     display: none;
+  }
+
+  .sm\:h-\[190px\]{
+    height: 190px;
   }
 
   .sm\:w-1\/2{
@@ -6305,6 +6351,10 @@ fieldset ~ fieldset{
     justify-content: center;
   }
 
+  .sm\:gap-7{
+    gap: 1.75rem;
+  }
+
   .sm\:gap-8{
     gap: 2rem;
   }
@@ -6321,11 +6371,6 @@ fieldset ~ fieldset{
   .sm\:py-1{
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
-  }
-
-  .sm\:py-12{
-    padding-top: 3rem;
-    padding-bottom: 3rem;
   }
 
   .sm\:py-3{
@@ -6763,6 +6808,10 @@ fieldset ~ fieldset{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .lg\:grid-cols-4{
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
@@ -6836,6 +6885,10 @@ fieldset ~ fieldset{
 
   .xl\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xl\:border-none{

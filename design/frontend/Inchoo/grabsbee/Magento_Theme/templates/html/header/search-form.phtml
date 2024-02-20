@@ -95,7 +95,7 @@ $hyvaicons = $viewModels->require(SvgIcons::class);
                    value="<?= /** @noEscape */ $helper->getEscapedQueryText() ?>"
                    placeholder="<?= $escaper->escapeHtmlAttr(__('Search entire store here...')) ?>"
                    maxlength="<?= $escaper->escapeHtmlAttr($helper->getMaxQueryLength()) ?>"
-                   class="border-0 w-full"
+                   class="border-0 w-full text-white"
                    @focus.once="suggest"
                    @input.debounce.300="suggest"
                    @keydown.arrow-down.prevent="focusElement($root.querySelector('[tabindex]'))"
