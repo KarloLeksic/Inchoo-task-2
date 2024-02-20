@@ -12,10 +12,10 @@
     }
 
     .btn-primary {
-        @apply text-white transition-colors bg-primary;
+        @apply text-white transition-colors bg-primary border border-primary;
 
         &:hover, &:active {
-            @apply bg-secondary;
+            @apply bg-secondary border-white;
         }
 
         &.btn-disabled {

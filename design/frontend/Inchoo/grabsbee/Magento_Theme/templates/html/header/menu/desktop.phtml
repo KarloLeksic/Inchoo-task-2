@@ -107,7 +107,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                                             <a
                                                                 href="<?= $escaper->escapeUrl($thirdSubMenuItem['url']) ?>"
                                                                 title="<?= $escaper->escapeHtmlAttr($thirdSubMenuItem['name']) ?>"
-                                                                class="text-sm uppercase leading-5 tracking-widest text-black visited:text-black"
+                                                                class="text-sm uppercase leading-5 tracking-widest text-black visited:text-black hover:underline"
                                                             >
                                                                 <?= $escaper->escapeHtml($thirdSubMenuItem['name']) ?>
                                                             </a>
@@ -120,7 +120,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                     <li class="before:content-[''] flex flex-col items-start"
                                         style="text-shadow: none;"
                                     >
-                                        <a href="#" class="text-sm font-bold uppercase leading-5 tracking-widest text-black">Contact Us</a>
+                                        <a href="#" class="text-sm font-bold uppercase leading-5 tracking-widest text-black hover:underline visited:text-black">Contact Us</a>
                                         <ul class="mt-4 ml-0 text-text">
                                             <li class="before:content-[''] flex items-center gap-0 mb-0">
                                                 <?= $hyvaicons->renderHtml('location', 'w-3 mr-2'); ?>
@@ -141,10 +141,10 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                         <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
-                <li class="block before:content-[''] mb-0 hover:text-white visited:text-white"
+                <li class="block before:content-[''] mb-0 hover:text-white"
                     style="text-shadow: 0 2px 5px black;"
                 >
-                    <a href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>" class="text-sm font-normal uppercase leading-5 tracking-widest text-white font-heading visited:text-white hover:text-white hover:underline">
+                    <a href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>" class="text-sm font-normal uppercase leading-5 tracking-widest text-white font-heading visited:text-white hover:underline">
                         CONTACT us
                     </a>
                 </li>

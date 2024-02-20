@@ -93,6 +93,7 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
                 @click.prevent="
                     searchOpen = !searchOpen;
                     $dispatch('search-open');
+                    console.log(searchOpen);
                 "
                 aria-label="<?= $escaper->escapeHtmlAttr(__('Toggle search form')) ?>"
                 aria-haspopup="true"
@@ -161,10 +162,9 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
         </div>
     </div>
     <!--Search-->
-    <div class="absolute z-10 w-full bg-primary flex border-t border-tertiary-90"
+    <div class="absolute z-10 w-full bg-primary flex border-t border-tertiary-90 transition-transform origin-top duration-500"
          id="search-content"
-         x-cloak x-show="searchOpen"
-         @click.outside="searchOpen = false"
+         x-cloak :class="searchOpen ? 'scale-y-100' : 'scale-y-0'"
          @keydown.escape="
             searchOpen = false;
             $refs.searchButton.focus();
