@@ -11,7 +11,7 @@
     <update handle="hyva_product_slider" />
     <body>
         <referenceContainer name="content">
-            <block name="hero" template="Magento_Theme::elements/hero.phtml"/>
+            <block name="hero-slider" template="Magento_Theme::elements/hero-slider.phtml"/>
             <block name="content-1" template="Magento_Theme::elements/content-1.phtml"/>
             <block name="slider-1" template="Magento_Catalog::product/slider/product-slider.phtml">
                 <arguments>
