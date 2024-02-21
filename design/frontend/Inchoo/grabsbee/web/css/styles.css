@@ -4059,6 +4059,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   margin-top: auto;
 }
 
+.ml-8{
+  margin-left: 2rem;
+}
+
 .box-content{
   box-sizing: content-box;
 }

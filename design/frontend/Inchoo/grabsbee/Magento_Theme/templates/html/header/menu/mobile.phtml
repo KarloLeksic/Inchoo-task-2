@@ -124,17 +124,51 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                 aria-label="<?= $escaper->escapeHtmlAttr(__('Subcategories')) ?>"
                             >
                                 <?php foreach ($menuItem['childData'] as $subMenuItem): ?>
-                                    <li class="before:content-[''] block">
-                                        <a
-                                            href="<?= $escaper->escapeUrl($subMenuItem['url']) ?>"
-                                            title="<?= $escaper->escapeHtmlAttr($subMenuItem['name']) ?>"
-                                            class="my-2 flex items-center gap-2 text-xs uppercase leading-6 tracking-widest"
+                                    <li class="before:content-[''] block"
+                                        x-data="{
+                                            openSubmenu: false,
+
+                                            toggleSubmenu() {
+                                                this.openSubmenu = !this.openSubmenu;
+                                            }
+                                        }"
+                                    >
+                                        <div class="my-2 flex items-center gap-2 text-xs uppercase leading-6 tracking-widest"
                                         >
-                                            <?= $hyvaicons->renderHtml('close-menu', 'w-[12px] h-[12px] rotate-45'); ?>
-                                            <span class="">
-                                                <?= $escaper->escapeHtml($subMenuItem['name']) ?>
+                                            <?php if (!empty($subMenuItem['childData'])): ?>
+                                                <span @click="toggleSubmenu()" class="" :class="openSubmenu ? 'rotate-45' : '' ">
+                                                    <?= $hyvaicons->renderHtml('close-menu', 'w-[12px] h-[12px] rotate-45'); ?>
+                                                </span>
+                                            <?php else: ?>
+                                            <span class="w-3">
+                                                &nbsp;
+                                                <!-- White space to be align with other links if there is no subcategory -->
                                             </span>
-                                        </a>
+
+                                            <?php endif; ?>
+
+                                            <a href="<?= $escaper->escapeUrl($subMenuItem['url']) ?>"
+                                               title="<?= $escaper->escapeHtmlAttr($subMenuItem['name']) ?>" class="">
+                                                <?= $escaper->escapeHtml($subMenuItem['name']) ?>
+                                            </a>
+                                        </div>
+                                        <?php if (!empty($subMenuItem['childData'])): ?>
+                                            <ul class="ml-8"
+                                                x-show="openSubmenu"
+                                            >
+                                                <?php foreach ($subMenuItem['childData'] as $thirdSubMenuItem): ?>
+                                                    <li class="before:content-['']">
+                                                        <a
+                                                            href="<?= $escaper->escapeUrl($thirdSubMenuItem['url']) ?>"
+                                                            title="<?= $escaper->escapeHtmlAttr($thirdSubMenuItem['name']) ?>"
+                                                            class="text-xs uppercase leading-6 tracking-widest"
+                                                        >
+                                                            <?= $escaper->escapeHtml($thirdSubMenuItem['name']) ?>
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
