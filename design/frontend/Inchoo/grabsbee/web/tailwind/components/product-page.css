@@ -20,7 +20,7 @@
                 @apply mt-1;
 
                 .price {
-                    @apply text-base;
+                    @apply text-base leading-6;
                 }
             }
 

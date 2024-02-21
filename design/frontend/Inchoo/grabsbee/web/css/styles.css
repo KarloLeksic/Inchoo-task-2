@@ -1939,7 +1939,7 @@ tr:nth-child(odd){
 }
 
 .price-excluding-tax .price, .price-including-tax .price{
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.625;
 }
 
@@ -3774,10 +3774,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   margin: -0.5rem;
 }
 
-.-m-3{
-  margin: -0.75rem;
-}
-
 .-m-4{
   margin: -1rem;
 }
@@ -4195,10 +4191,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   width: 50%;
 }
 
-.w-1\/4{
-  width: 25%;
-}
-
 .w-10{
   width: 2.5rem;
 }
@@ -4303,6 +4295,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   width: 410px;
 }
 
+.w-\[78px\]{
+  width: 78px;
+}
+
 .w-\[97px\]{
   width: 97px;
 }
@@ -4325,6 +4321,10 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 
 .max-w-\[330px\]{
   max-width: 330px;
+}
+
+.max-w-\[695px\]{
+  max-width: 695px;
 }
 
 .max-w-full{
@@ -4665,12 +4665,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-.space-y-2 > :not([hidden]) ~ :not([hidden]){
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]){
@@ -5778,6 +5772,13 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
 
+.line-clamp-2{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 /* This class only exists for backwards compatibility, */
 
 /* The default is applied in tailwind.config.js since Hyvä 1.2.0 */
@@ -6076,10 +6077,6 @@ fieldset ~ fieldset{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.hover\:border-b:hover{
-  border-bottom-width: 1px;
-}
-
 .hover\:border-primary:hover{
   --tw-border-opacity: 1;
   border-color: rgb(18 22 122 / var(--tw-border-opacity));
@@ -6339,6 +6336,10 @@ fieldset ~ fieldset{
     margin-left: 0.75rem;
   }
 
+  .sm\:ml-7{
+    margin-left: 1.75rem;
+  }
+
   .sm\:mr-3{
     margin-right: 0.75rem;
   }
@@ -6407,6 +6408,10 @@ fieldset ~ fieldset{
     width: 360px;
   }
 
+  .sm\:w-\[90px\]{
+    width: 90px;
+  }
+
   .sm\:table-fixed{
     table-layout: fixed;
   }
@@ -6439,10 +6444,6 @@ fieldset ~ fieldset{
     gap: 1.75rem;
   }
 
-  .sm\:gap-8{
-    gap: 2rem;
-  }
-
   .sm\:p-0{
     padding: 0px;
   }
@@ -6450,6 +6451,16 @@ fieldset ~ fieldset{
   .sm\:px-6{
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  .sm\:px-7{
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .sm\:px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .sm\:py-1{
@@ -6979,10 +6990,6 @@ fieldset ~ fieldset{
   .lg\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
-  }
-
-  .lg\:hover\:underline:hover{
-    text-decoration-line: underline;
   }
 }
 

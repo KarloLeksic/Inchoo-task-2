@@ -13,7 +13,7 @@
     @apply whitespace-nowrap;
 
     .price {
-        @apply font-semibold leading-relaxed;
+        @apply font-bold leading-relaxed;
     }
 }
 

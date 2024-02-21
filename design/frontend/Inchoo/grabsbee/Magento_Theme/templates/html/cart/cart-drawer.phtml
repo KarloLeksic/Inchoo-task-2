@@ -13,6 +13,7 @@ use Hyva\Theme\ViewModel\StoreConfig;
 use Hyva\Theme\ViewModel\HeroiconsOutline;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
+use Hyva\Theme\ViewModel\SvgIcons;
 
 /** @var Escaper $escaper */
 /** @var Template $block */
@@ -23,6 +24,9 @@ $maxItemsToDisplay = $storeConfig->getStoreConfig('checkout/sidebar/max_items_di
 
 /** @var HeroiconsOutline $heroicons */
 $heroicons = $viewModels->require(HeroiconsOutline::class);
+
+/** @var SvgIcons $hyvaicons */
+$hyvaicons = $viewModels->require(SvgIcons::class);
 ?>
 <script>
     function initCartDrawer() {
@@ -52,6 +56,7 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
                 if (this.maxItemsToDisplay > 0) {
                     this.cartItems = this.cartItems.slice(0, parseInt(this.maxItemsToDisplay, 10));
                 }
+                console.log(this.cartItems);
             },
             deleteItemFromCart(itemId) {
                 this.isLoading = true;
@@ -143,7 +148,7 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
              role="button"
              @click="closeCartDrawer"
              aria-label="<?= $escaper->escapeHtmlAttr(__('Close minicart')) ?>"></div>
-        <div class="relative w-screen max-w-md shadow-2xl"
+        <div class="relative w-screen max-w-[695px] shadow-2xl"
              x-show="open"
              x-transition:enter="transform transition ease-in-out duration-500 sm:duration-700"
              x-transition:enter-start="translate-x-full"
@@ -160,71 +165,75 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
             <div class="flex flex-col h-full max-h-screen bg-white shadow-xl">
                 <?= $block->getChildHtml('cart-drawer.top'); ?>
 
-                <header class="relative px-4 py-6 sm:px-6">
-                    <p id="cart-drawer-title" class="text-lg font-medium leading-7 text-gray-900">
-                        <strong><?= $escaper->escapeHtml(__('My Cart')) ?></strong>
-                        <span class="items-total text-xs"
-                              x-show="maxItemsToDisplay && maxItemsToDisplay < itemsCount"
-                              x-text="getItemCountTitle()">
-                        </span>
-                    </p>
-                </header>
+                <template x-if="itemsCount">
+                    <div class="ml-3 sm:ml-7 mt-20 mb-6 font-bold text-text text-xs leading-6">
+                        <p class="uppercase">
+                            <span x-text="itemsCount"></span>
+                            <?= __('item in cart') ?>
+                        </p>
+                        <p class="mt-6">
+                            <?= __('Recently added items') ?>
+                        </p>
+                    </div>
+                </template>
 
                 <?= $block->getChildHtml('cart-drawer.items.before'); ?>
 
                 <template x-if="!itemsCount">
-                    <div class="relative px-4 py-6 bg-white border-bs sm:px-6 border-container">
-                        <?= $escaper->escapeHtml(__('Cart is empty')) ?>
-                    </div>
+                    <p class="ml-3 sm:ml-7 mt-20 font-bold text-text text-xs leading-6">
+                        <?= $escaper->escapeHtml(__('You have no items in your shopping cart')) ?>
+                    </p>
                 </template>
 
                 <template x-if="itemsCount">
-                    <div class="relative grid gap-6 px-4 py-6 overflow-y-auto overscroll-y-contain bg-white border-b
-                                sm:gap-8 sm:px-6 border-container"
+                    <div class="grid overflow-y-auto overscroll-y-contain gap-6"
                     >
                         <template x-for="item in cartItems">
-                            <div class="flex items-start p-3 -m-3 space-x-4 transition duration-150
-                        ease-in-out rounded-lg hover:bg-gray-100">
+                            <div class="flex items-start px-3 sm:px-7">
                                 <a :href="item.product_url"
-                                    class="w-1/4"
+                                    class=""
                                     :aria-label="hyva.strf('<?= $escaper->escapeJs(__('Product "%0"')) ?>', item.product_name)"
                                 >
                                     <img
                                         :src="item.product_image.src"
-                                        :width="item.product_image.width"
-                                        :height="item.product_image.height"
                                         loading="lazy"
                                         alt=""
+                                        class="w-[78px] sm:w-[90px]"
                                     />
                                 </a>
-                                <div class="w-3/4 space-y-2">
-                                    <div>
-                                        <p class="text-xl">
-                                            <span x-html="item.qty"></span> x <span x-html="item.product_name"></span>
-                                        </p>
-                                        <p class="text-sm"><span x-html="item.product_sku"></span></p>
-                                    </div>
+                                <div class="w-3/4 flex-1 ml-6 sm:ml-7">
+                                    <p class="text-sm text-secondary uppercase font-bold leading-6 line-clamp-2">
+                                        <span x-html="item.product_name"></span>
+                                    </p>
                                     <template x-for="option in item.options">
-                                        <div class="pt-2">
-                                            <p class="font-semibold" x-text="option.label + ':'"></p>
-                                            <p class="text-secondary" x-html="option.value"></p>
+                                        <div class="mt-3 mb-2 text-xs text-text leading-6">
+                                            <span class="font-bold " x-text="option.label + ':'"> </span>
+                                            <span class="" x-html="option.value"></span>
                                         </div>
                                     </template>
-                                    <p><span x-html="item.product_price"></span></p>
-                                    <div class="pt-4">
+                                    <p class="text-text text-xs leading-6"><span x-html="item.product_price"></span></p>
+                                    <div class="mt-2 flex items-center">
+                                        <label for="qty-change-input" class="text-xs font-bold text-text">Qty: </label>
+                                        <input id="qty-change-input" x-bind:value="item.qty" type="number" class="ml-1 w-16">
+                                    </div>
+                                    <div class="pt-5 flex justify-end">
                                         <a :href="item.configure_url"
                                             x-show="item.product_type !== 'grouped'"
-                                            class="inline-flex p-2 mr-2 btn btn-primary"
+                                            class="mr-6"
                                             :aria-label="hyva.strf('<?= $escaper->escapeJs(__('Edit product "%0"')) ?>', item.product_name)"
                                         >
-                                            <?= $heroicons->pencilHtml('', 20, 20, ['aria-hidden' => 'true']); ?>
+                                            <span aria-hidden="true">
+                                                <?= $hyvaicons->renderHtml('edit', 'w-4'); ?>
+                                            </span>
                                         </a>
                                         <button type="button"
-                                                class="inline-flex p-2 btn btn-primary"
+                                                class=""
                                                 @click="deleteItemFromCart(item.item_id)"
                                                 :aria-label="hyva.strf('<?= $escaper->escapeJs(__('Remove product "%0" from cart')) ?>', item.product_name)"
                                         >
-                                            <?= $heroicons->trashHtml('', 20, 20, ['aria-hidden' => 'true']); ?>
+                                            <span aria-hidden="true">
+                                                <?= $hyvaicons->renderHtml('trash', 'w-4'); ?>
+                                            </span>
                                         </button>
                                     </div>
 
@@ -235,28 +244,25 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
                 </template>
 
                 <template x-if="itemsCount">
-                    <div>
+                    <div class="mt-10">
                         <?= $block->getChildHtml('cart-drawer.totals.before'); ?>
 
-                        <div class="relative grid gap-6 px-4 py-6 bg-white sm:gap-8 sm:px-6">
-                            <div class="w-full p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg
-                                        hover:bg-gray-100"
+                        <div class="flex flex-col w-full justify-center px-3 sm:px-8">
+                            <div class="w-full h-16 flex justify-between items-center text-text border-t border-b border-primary mb-6"
                             >
-                                <p><?= $escaper->escapeHtml(__('Subtotal')) ?>: <span x-html="cart.subtotal"></span></p>
+                                <span class="text-sm leading-5"><?= $escaper->escapeHtml(__('Cart Subtotal')) ?> </span>
+                                <span x-html="cart.subtotal" class="font-bold"></span>
                             </div>
-                            <div class="w-full p-3 -m-3 space-x-4 transition duration-150 ease-in-out rounded-lg
-                                        hover:bg-gray-100"
-                            >
+                            <div class="flex flex-col sm:flex-row justify-between items-center">
                                 <a @click.prevent.stop="$dispatch('toggle-authentication',
                                     {url: '<?= $escaper->escapeUrl($block->getUrl('checkout')) ?>'});"
                                     href="<?= $escaper->escapeUrl($block->getUrl('checkout')) ?>"
-                                    class="inline-flex btn btn-primary"
+                                    class="inline-flex btn btn-primary btn-size-lg uppercase visited:text-white sm:order-2 w-[336px]"
                                 >
-                                    <?= $escaper->escapeHtml(__('Checkout')) ?>
+                                    <?= $escaper->escapeHtml(__('Proceed to Checkout')) ?>
                                 </a>
-                                <span><?= $escaper->escapeHtml(__('or')) ?></span>
                                 <a href="<?= $escaper->escapeUrl($block->getUrl('checkout/cart')) ?>"
-                                    class="underline"
+                                    class="uppercase leading-6 mt-6 sm:mt-0 block text-center"
                                 >
                                     <?= $escaper->escapeHtml(__('View and Edit Cart')) ?>
                                 </a>
@@ -273,9 +279,12 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
                 type="button"
                 @click="closeCartDrawer"
                 aria-label="<?= $escaper->escapeHtmlAttr(__('Close minicart')) ?>"
-                class="absolute top-0 right-0 p-4 mt-2 text-gray-300 transition-colors hover:text-black"
+                class="absolute top-0 right-0 py-6 px-3 sm:px-7 text-text transition-colors hover:text-black flex items-center"
             >
-                <?= $heroicons->xHtml('', 24, 24, ['aria-hidden' => 'true']); ?>
+                Close
+                <span aria-hidden="true">
+                    <?= $hyvaicons->renderHtml('close-menu', 'w-3 h-3 ml-2'); ?>
+                </span>
             </button>
         </div>
         <?= $block->getChildHtml('loading') ?>
