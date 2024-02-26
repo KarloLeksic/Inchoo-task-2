@@ -31,7 +31,6 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
 $hyvaicons = $viewModels->require(SvgIcons::class);
 
 $title = (string) $block->getTitle();
-$test = (string) $block->getTest();
 $items = $block->getItems() ?? [];
 if (is_object($items) && $items instanceof Iterator) {
     $items = iterator_to_array($items);

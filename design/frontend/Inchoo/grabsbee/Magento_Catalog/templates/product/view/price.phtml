@@ -280,12 +280,12 @@ $displayTax = $productPriceViewModel->displayPriceIncludingTax();
     <template x-if="activeProductsPriceData">
         <div class="final-price flex items-center text-xl md:text-2xl text-text leading-7 md:leading-8">
             <?php if ($product->canConfigure() && is_int($product->getPrice())): ?>
-                <span class="price-label block" :class="{ 'invisible' : !showRegularPriceLabel }">
+                <span class="price-label block mr-3" x-show="showRegularPriceLabel">
                     <?= $escaper->escapeHtml(__('As low as')) ?>:
                 </span>
             <?php endif; ?>
             <span id="product-price-<?= (int)$product->getId() ?>"
-                  class="price-wrapper ml-3 font-bold">
+                  class="price-wrapper font-bold">
                 <span class="price" x-html="getFormattedFinalPrice()"></span>
             </span>
         </div>
