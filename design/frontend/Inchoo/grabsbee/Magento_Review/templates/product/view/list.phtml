@@ -14,7 +14,6 @@ use Magento\Framework\View\Helper\SecureHtmlRenderer;
 use Magento\Framework\Escaper;
 use Magento\Review\Block\Product\View as ProductReview;
 use Magento\Theme\Block\Html\Pager;
-use Hyva\Theme\ViewModel\SvgIcons;
 
 // phpcs:disable Generic.Files.LineLength.TooLong
 
@@ -26,9 +25,6 @@ use Hyva\Theme\ViewModel\SvgIcons;
 
 /** @var HeroiconsOutline $heroicons */
 $heroicons = $viewModels->require(HeroiconsOutline::class);
-
-/** @var SvgIcons $hyvaicons */
-$hyvaicons = $viewModels->require(SvgIcons::class);
 
 /** @var HeroiconsSolid $heroiconsSolid */
 $heroiconsSolid = $viewModels->require(HeroiconsSolid::class);
@@ -50,78 +46,59 @@ $productName = $block->getProduct()->getName();
 ?>
 <?php if (count($items)): ?>
     <div
-        class="px-3 sm:px-0 sm:container sm:mx-auto"
         id="customer-review-list"
         aria-label="<?= $escaper->escapeHtmlAttr(__('Customer Reviews')) ?>"
         tabindex="0"
-        x-data="{
-            open: false,
-            toggle() {this.open = !this.open;}
-        }"
     >
-        <div class="">
-            <?php if (!$block->getHideTitle()): ?>
-                <<?= /* @noEscape */ $headingTag ?> class="text-secondary font-body font-bold text-sm my-0 uppercase leading-6 md:text-base flex items-center justify-between py-2"
-            @click="toggle()"
-            >
-                    <?= $escaper->escapeHtml(__('Customer Reviews')) ?>
-                    <span :class="open ? 'rotate-180' : ''">
-                        <?= $hyvaicons->renderHtml('chevron-down', 'w-2'); ?>
-                    </span>
-
-                </<?= /* @noEscape */ $headingTag ?>>
-            <?php endif ?>
-        </div>
-        <div x-show="open">
-            <div class="card w-full px-6 py-3 border border-tertiary-5">
-                <?php foreach ($items as $review): ?>
-                    <div itemscope itemprop="review" itemtype="http://schema.org/Review"
-                         class="pb-4 my-4">
-                        <?php if (count($review->getRatingVotes())): ?>
-                            <div class="table">
-                                <?php foreach ($review->getRatingVotes() as $vote): ?>
-                                    <?php
-                                    $rating = $vote->getPercent();
-                                    $ratingSteps = 5;
-                                    $starsFilled = is_numeric($rating) ? floor($rating / 100 * $ratingSteps) : 0;
-                                    $starsEmpty = floor($ratingSteps - $starsFilled);
-                                    ?>
-                                    <div class="table-row" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-                                        <div class="table-cell pr-6 align-middle text-left">
-                                            <?= $escaper->escapeHtml($vote->getRatingCode()) ?>
-                                        </div>
-                                        <span class="hidden" itemprop="ratingValue"><?= /** @noEscape */ $starsFilled; ?></span>
-                                        <div
-                                            class="flex flex-row"
-                                            role="img"
-                                            aria-label="<?= $escaper->escapeHtmlAttr(__('%1 rating. %2 out of %3 stars', $productName, $starsFilled, $ratingSteps))?>"
-                                        >
-                                            <?php $i = 0; ?>
-                                            <?php while ($i < $starsFilled): ?>
-                                                <?= $heroiconsSolid->starHtml('text-yellow-400', 24, 24, ["aria-hidden" => "true"]); ?>
-                                                <?php $i++; ?>
-                                            <?php endwhile; ?>
-                                            <?php $i = 0; ?>
-                                            <?php while ($i < $starsEmpty): ?>
-                                                <?= $heroiconsSolid->starHtml('text-gray-400', 24, 24, ["aria-hidden" => "true"]); ?>
-                                                <?php $i++; ?>
-                                            <?php endwhile; ?>
-                                        </div>
+        <div class="card w-full px-6 py-3">
+            <?php foreach ($items as $review): ?>
+                <div itemscope itemprop="review" itemtype="http://schema.org/Review"
+                     class="border-b pb-4 my-4 border-container last:border-0 last:mb-0">
+                    <?php if (count($review->getRatingVotes())): ?>
+                        <div class="table">
+                            <?php foreach ($review->getRatingVotes() as $vote): ?>
+                                <?php
+                                $rating = $vote->getPercent();
+                                $ratingSteps = 5;
+                                $starsFilled = is_numeric($rating) ? floor($rating / 100 * $ratingSteps) : 0;
+                                $starsEmpty = floor($ratingSteps - $starsFilled);
+                                ?>
+                                <div class="table-row" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                                    <div class="table-cell pr-6 align-middle text-left">
+                                        <?= $escaper->escapeHtml($vote->getRatingCode()) ?>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-                        <div class="text-lg my-2" itemprop="name">
-                            <?= $escaper->escapeHtml($review->getTitle()) ?>
+                                    <span class="hidden" itemprop="ratingValue"><?= /** @noEscape */ $starsFilled; ?></span>
+                                    <div
+                                        class="flex flex-row"
+                                        role="img"
+                                        aria-label="<?= $escaper->escapeHtmlAttr(__('%1 rating. %2 out of %3 stars', $productName, $starsFilled, $ratingSteps))?>"
+                                    >
+                                        <?php $i = 0; ?>
+                                        <?php while ($i < $starsFilled): ?>
+                                            <?= $heroiconsSolid->starHtml('text-yellow-400', 24, 24, ["aria-hidden" => "true"]); ?>
+                                            <?php $i++; ?>
+                                        <?php endwhile; ?>
+                                        <?php $i = 0; ?>
+                                        <?php while ($i < $starsEmpty): ?>
+                                            <?= $heroiconsSolid->starHtml('text-gray-400', 24, 24, ["aria-hidden" => "true"]); ?>
+                                            <?php $i++; ?>
+                                        <?php endwhile; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
-                        <div>
-                            <span><?= $escaper->escapeHtml(__('Review by')) ?></span>
-                            <strong itemprop="author"><?= $escaper->escapeHtml($review->getNickname()) ?></strong>
-                            <time
-                                class="text-gray-700 inline-block ml-2"
-                                itemprop="datePublished"
-                                datetime="<?= $escaper->escapeHtmlAttr($block->formatDate($review->getCreatedAt(), $format)); ?>"
-                            >
+                    <?php endif; ?>
+                    <div class="text-lg my-2" itemprop="name">
+                        <?= $escaper->escapeHtml($review->getTitle()) ?>
+                    </div>
+                    <div>
+                        <span><?= $escaper->escapeHtml(__('Review by')) ?></span>
+                        <strong itemprop="author"><?= $escaper->escapeHtml($review->getNickname()) ?></strong>
+                        <time
+                            class="text-gray-700 inline-block ml-2"
+                            itemprop="datePublished"
+                            datetime="<?= $escaper->escapeHtmlAttr($block->formatDate($review->getCreatedAt(), $format)); ?>"
+                        >
                                 <span class="sr-only">
                                     <?= $escaper->escapeHtml(
                                         $block->formatDate(
@@ -130,24 +107,23 @@ $productName = $block->getProduct()->getName();
                                         )
                                     ) ?>
                                 </span>
-                                <span aria-hidden="true">
+                            <span aria-hidden="true">
                                     <?= $escaper->escapeHtml(
                                         $block->formatDate($review->getCreatedAt(), $format)
                                     ) ?>
                                 </span>
-                            </time>
-                        </div>
-                        <div class="mt-2" itemprop="description">
-                            <?= /* @noEscape */ nl2br($escaper->escapeHtml($review->getDetail())) ?>
-                        </div>
+                        </time>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            <?php if ($toolbar): ?>
-                <div class="toolbar review-toolbar mt-4">
-                    <?= $toolbar->toHtml() ?>
+                    <div class="mt-2" itemprop="description">
+                        <?= /* @noEscape */ nl2br($escaper->escapeHtml($review->getDetail())) ?>
+                    </div>
                 </div>
-            <?php endif; ?>
+            <?php endforeach; ?>
         </div>
+        <?php if ($toolbar): ?>
+            <div class="toolbar review-toolbar mt-4">
+                <?= $toolbar->toHtml() ?>
+            </div>
+        <?php endif; ?>
     </div>
 <?php endif; ?>

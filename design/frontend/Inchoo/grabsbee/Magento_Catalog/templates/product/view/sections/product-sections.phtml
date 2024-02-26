@@ -8,45 +8,109 @@
 
 declare(strict_types=1);
 
+use Hyva\Theme\Model\ViewModelRegistry;
+use Magento\Catalog\Block\Product\View\Details;
+use Magento\Framework\Escaper;
+use Hyva\Theme\ViewModel\SvgIcons;
+
+/** @var ViewModelRegistry $viewModels */
 /** @var Details $block */
 /** @var Escaper $escaper */
 
-use Magento\Catalog\Block\Product\View\Details;
-use Magento\Framework\Escaper;
+/** @var SvgIcons $hyvaicons */
+$hyvaicons = $viewModels->require(SvgIcons::class);
 
-$titleRenderer = $block->getChildBlock('product.section.title.renderer');
-$defaultTitleTemplate = $titleRenderer->getTemplate();
-
+$sectionIsOpen = '';
 ?>
-<div class="grid lg:grid-cols-2 sm:container sm:mx-auto md:mt-6">
-<?php
-foreach ($block->getGroupSortedChildNames('detailed_info', '') as $sectionName) {
-    $sectionBlock  = $block->getLayout()->getBlock($sectionName);
-    $sectionHtml   = (string) $sectionBlock->toHtml();
-    $titleTemplate = $sectionBlock->getData('title_template') ?? $defaultTitleTemplate;
 
-    if (empty(trim($sectionHtml))) {
-        continue;
-    }
-    ?>
-    <section id="<?= $escaper->escapeHtmlAttr($sectionBlock->getNameInLayout()) ?>"
-             class="px-3 sm:px-0"
-             x-data="{
-                open: false,
-                toggle() {
-                    this.open = !this.open;
-                }
-             }"
-
+<div x-data="initProductSections" class="px-3 sm:px-0 sm:container sm:mx-auto lg:mt-6">
+    <nav
+        class="hidden lg:flex pb-6 gap-6"
+        aria-label="<?= $escaper->escapeHtml(__('Navigate to Product Section')) ?>"
+        x-show="items.length"
     >
-        <?=
-            $titleRenderer->setTemplate($titleTemplate)
-                          ->assign('sectionBlock', $sectionBlock)
-                          ->toHtml()
-        ?>
-        <div class="w-full" x-show="open">
-            <?= /** @noEscape  */ $sectionHtml ?>
-        </div>
-    </section>
-<?php } ?>
+        <template x-for="tab in items">
+            <button
+                type="button"
+                class="text-secondary font-bold"
+                :aria-expanded="sectionItemIsOpen(tab.id)"
+                :aria-controls="tab.id"
+                @click="openSectionItem(tab.id)"
+                x-text="tab.getAttribute('data-name')"
+            ></button>
+        </template>
+    </nav>
+
+    <div
+        x-ref="accordion"
+        style="min-height: 500px"
+    >
+        <?php foreach ($block->getGroupSortedChildNames('detailed_info', '') as $key => $sectionName): ?>
+            <?php
+            $sectionBlock  = $block->getLayout()->getBlock($sectionName);
+            $sectionHtml   = (string) $sectionBlock->toHtml();
+            $sectionTitle = $sectionBlock->getTitle() ?: $sectionName;
+            $sectionId = str_replace('.', '-', $sectionBlock->getNameInLayout());
+            if (empty(trim($sectionHtml))) {
+                continue;
+            }
+
+            if ($key === 0) {
+                $sectionIsOpen = $sectionId;
+            }
+            ?>
+            <details
+                id="<?= $escaper->escapeHtmlAttr($sectionId) ?>"
+                data-name="<?= $escaper->escapeHtml($sectionTitle) ?>"
+                x-data="{ id: $el.id }"
+                class="group"
+                :open="sectionItemIsOpen(id)"
+            >
+                <summary
+                    @click.prevent="openSectionItem(id)"
+                    class="flex [&::-webkit-details-marker]:hidden lg:hidden w-full items-center justify-between py-2 text-sm text-secondary font-bold group-open:text-secondary-90"
+
+                >
+                    <span><?= __($escaper->escapeHtml($sectionTitle)) ?></span>
+                    <span class="transition-transform group-open:rotate-180">
+                        <?= $hyvaicons->renderHtml('chevron-down', 'w-2'); ?>
+                    </span>
+                </summary>
+                <div x-show="sectionItemIsOpen(id)" x-collapse>
+                    <div class="">
+                        <?= /** @noEscape  */ $sectionHtml ?>
+                    </div>
+                </div>
+            </details>
+        <?php endforeach; ?>
+    </div>
+    <script>
+        function initProductSections() {
+            return {
+                items: [],
+                currentOpen: '<?= /** @noEscape */ $sectionIsOpen ?>',
+                init() {
+                    this.$refs.accordion.style.minHeight = null;
+                    this.items = [...this.$refs.accordion.children];
+                },
+                openSectionItem(id) {
+                    this.currentOpen = id;
+                    this.$nextTick(() => {
+                        document.getElementById(this.currentOpen).scrollIntoView({
+                            behavior: "smooth",
+                            block: "nearest",
+                            inline: "nearest"
+                        });
+                    });
+                },
+                sectionItemIsOpen(id) {
+                    return this.currentOpen === id
+                },
+            }
+        }
+    </script>
+    <?php // To ensure the summary is visible when JavaScript is disabled.  ?>
+    <noscript>
+        <style>details[data-name] summary { display: flex }</style>
+    </noscript>
 </div>

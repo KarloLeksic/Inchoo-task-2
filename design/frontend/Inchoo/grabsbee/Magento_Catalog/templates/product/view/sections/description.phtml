@@ -20,6 +20,7 @@ use Hyva\Theme\ViewModel\ProductPage;
 
 /** @var ProductPage $productViewModel */
 $productViewModel = $viewModels->require(ProductPage::class);
+
 /** @var Product $product */
 $product = $productViewModel->getProduct();
 
@@ -27,9 +28,10 @@ if (!$product->getDescription()) {
     return;
 }
 
-$cssClasses = $block->getData('css_classes') ?? 'prose';
-
+$cssClasses = $block->getData('css_classes')
+    ?? 'prose prose-slate max-w-full prose-h2:text-xl prose-h3:text-lg prose-h4:text-base prose-headings:first:mt-0';
 ?>
-<div class="<?= $escaper->escapeHtmlAttr($cssClasses) ?>">
+
+<div class="<?= $escaper->escapeHtmlAttr($cssClasses) ?> text-sm text-black leading-5 lg:text-base lg:leading-6">
     <?= $productViewModel->productAttributeHtml($product, $product->getDescription(), 'description') ?>
 </div>

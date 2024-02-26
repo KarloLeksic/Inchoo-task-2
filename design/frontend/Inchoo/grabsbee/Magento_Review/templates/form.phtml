@@ -46,7 +46,7 @@ $gqlViewModel = $viewModels->require(GraphqlViewModel::class);
 $recaptcha = $block->getData('viewModelRecaptcha');
 
 ?>
-<div class="md:container md:mx-auto items-center" id="review-form" tabindex="0">
+<div class="md:container md:mx-auto items-center mt-10" id="review-form" tabindex="0">
     <div class="px-3 sm:px-0 sm:container sm:mx-auto">
         <div class="text-xl my-3">
             <?= $escaper->escapeHtml(__('Write Your Own Review')) ?>
@@ -71,10 +71,6 @@ $recaptcha = $block->getData('viewModelRecaptcha');
                             <?= $escaper->escapeHtml($block->getProductInfo()->getName()) ?>
                         </span>
                     </legend>
-                    <?php
-                        $ratings = $block->getRatings();
-                        $ratingSize = $block->getRatings()->getSize();
-                    ?>
                     <?php if ($block->getRatings() && $block->getRatings()->getSize()): ?>
                         <fieldset name="rating-group">
                             <div class="flex flex-col mt-4 mb-3">
