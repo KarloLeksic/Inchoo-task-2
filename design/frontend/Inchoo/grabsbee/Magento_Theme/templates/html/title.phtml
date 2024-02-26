@@ -25,9 +25,8 @@ if (trim((string)$block->getPageHeading())) {
 }
 ?>
 <?php if ($titleHtml): ?>
-<div class="container flex flex-col md:flex-row flex-wrap my-6 font-bold
-    lg:mt-8 <?= /** @noEscape */ $cssClass ?>">
-    <h1 class="text-gray-900 page-title title-font"
+<div class="container flex flex-col md:flex-row flex-wrap mt-6 sm:mt-0 font-normal order-2 <?= /** @noEscape */ $cssClass ?>">
+    <h1 class="text-text text-start text-2xl page-title title-font leading-10 m-0 px-3 sm:px-0 font-body font-bold"
         <?php if ($block->getId()): ?> id="<?= $escaper->escapeHtmlAttr($block->getId()) ?>" <?php endif; ?>>
         <?= /* @noEscape */ $titleHtml ?>
     </h1>

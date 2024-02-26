@@ -10,11 +10,11 @@ declare(strict_types=1);
 
 use Hyva\Theme\Model\ViewModelRegistry;
 use Hyva\Theme\ViewModel\CurrentProduct;
-use Hyva\Theme\ViewModel\HeroiconsSolid;
 use Hyva\Theme\ViewModel\Wishlist;
 use Magento\Catalog\Model\Product;
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
+use Hyva\Theme\ViewModel\SvgIcons;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
@@ -23,8 +23,8 @@ use Magento\Framework\View\Element\Template;
 /** @var Wishlist $wishlistViewModel */
 $wishlistViewModel = $viewModels->require(Wishlist::class);
 
-/** @var HeroiconsSolid $heroicons */
-$heroicons = $viewModels->require(HeroiconsSolid::class);
+/** @var SvgIcons $hyvaicons */
+$hyvaicons = $viewModels->require(SvgIcons::class);
 
 /** @var CurrentProduct $currentProduct */
 $currentProduct = $viewModels->require(CurrentProduct::class);
@@ -143,7 +143,7 @@ $uniqueId = '_' . uniqid();
             ($updateParams) ? __('Update Wish List') : __('Add to Wish List')
         ) ?>"
         id="add-to-wishlist"
-        class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex
-                items-center justify-center text-gray-500 hover:text-red-600 ml-4">
-    <?= $heroicons->heartHtml("w-5 h-5", 25, 25) ?>
+        class="flex items-center text-primary text-[10px] md:text-xs leading-5 mr-6 md:mr-2">
+    <?= $hyvaicons->renderHtml('wishlist', 'w-[12px] mr-1'); ?>
+    <?= __('Add to Wishlist') ?>
 </button>

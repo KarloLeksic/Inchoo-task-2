@@ -76,11 +76,12 @@ $step = $stockItemViewModel->getQtyIncrements($product)
     <div x-data="initQtyField()"
         class="">
         <?php if ($product->isSaleable()): ?>
-            <div class="mr-2">
+            <div class="md:flex md:items-center">
                 <label for="qty[<?= (int)$product->getId() ?>]"
-                    class="sr-only"
+                       class="mr-1 text-xs md:text-sm"
+                       aria-label="Quantity"
                 >
-                    <?= $escaper->escapeHtml(__('Quantity')) ?>
+                    <?= $escaper->escapeHtml(__('Qty:')) ?>
                 </label>
                 <input name="qty"
                     @private-content-loaded.window="onGetCartData($event.detail, $dispatch)"
@@ -99,7 +100,7 @@ $step = $stockItemViewModel->getQtyIncrements($product)
                     <?php if ($step): ?>step="<?= /** @noEscape */ $step ?>"<?php endif; ?>
                     <?php endif; ?>
                     :value="qty"
-                    class="form-input px-2 py-2 w-20 text-center invalid:ring-2 invalid:ring-red-500"
+                    class="form-input px-3 py-3 w-16 h-10 text-start invalid:ring-2 invalid:ring-red-500"
                     x-model.number="qty"
                     @change="$dispatch('update-qty-<?= (int)$product->getId() ?>', qty)"
                 />

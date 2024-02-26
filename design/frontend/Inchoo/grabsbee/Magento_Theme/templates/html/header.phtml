@@ -93,7 +93,6 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
                 @click.prevent="
                     searchOpen = !searchOpen;
                     $dispatch('search-open');
-                    console.log(searchOpen);
                 "
                 aria-label="<?= $escaper->escapeHtmlAttr(__('Toggle search form')) ?>"
                 aria-haspopup="true"
@@ -149,7 +148,7 @@ $showMiniCart = $storeConfig->getStoreConfig(SidebarCart::XML_PATH_CHECKOUT_SIDE
                     class="
                         absolute top-0 right-0 h-5 px-2 py-1 -mt-5 -mr-4 text-xs font-semibold
                         leading-none text-center text-white uppercase transform -translate-x-1
-                        translate-y-1/2 rounded-full bg-primary
+                        translate-y-1/2 rounded-full bg-secondary
                     "
                     aria-hidden="true"
                 ></span>

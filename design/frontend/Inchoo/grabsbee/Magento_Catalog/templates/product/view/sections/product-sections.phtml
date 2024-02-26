@@ -18,7 +18,7 @@ $titleRenderer = $block->getChildBlock('product.section.title.renderer');
 $defaultTitleTemplate = $titleRenderer->getTemplate();
 
 ?>
-<div class="grid lg:grid-cols-2 gap-8">
+<div class="grid lg:grid-cols-2 sm:container sm:mx-auto md:mt-6">
 <?php
 foreach ($block->getGroupSortedChildNames('detailed_info', '') as $sectionName) {
     $sectionBlock  = $block->getLayout()->getBlock($sectionName);
@@ -29,13 +29,22 @@ foreach ($block->getGroupSortedChildNames('detailed_info', '') as $sectionName) 
         continue;
     }
     ?>
-    <section id="<?= $escaper->escapeHtmlAttr($sectionBlock->getNameInLayout()) ?>">
+    <section id="<?= $escaper->escapeHtmlAttr($sectionBlock->getNameInLayout()) ?>"
+             class="px-3 sm:px-0"
+             x-data="{
+                open: false,
+                toggle() {
+                    this.open = !this.open;
+                }
+             }"
+
+    >
         <?=
             $titleRenderer->setTemplate($titleTemplate)
                           ->assign('sectionBlock', $sectionBlock)
                           ->toHtml()
         ?>
-        <div class="card w-full">
+        <div class="w-full" x-show="open">
             <?= /** @noEscape  */ $sectionHtml ?>
         </div>
     </section>

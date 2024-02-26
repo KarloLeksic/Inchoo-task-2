@@ -4,7 +4,6 @@
     }
 
     .swatch-option {
-        @apply px-2 py-1 m-1 flex border justify-center;
-        min-width: 40px;
+        @apply flex border justify-center;
     }
 }

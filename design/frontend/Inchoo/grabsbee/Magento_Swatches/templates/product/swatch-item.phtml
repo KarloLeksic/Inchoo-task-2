@@ -36,11 +36,11 @@ if (!$productId || !$attributeId) {
             :for="$id('attribute-option-<?= (int) $productId ?>-'+item.id)"
             class="swatch-option relative shadow-sm cursor-pointer select-none bg-container-lighter product-option-value-label"
             :class="{
-                'border-container-lighter ring ring-primary/50':
+                'border-container-lighter ring ring-secondary':
                     (selectedValues[<?= (int)$attributeId ?>] === item.id),
                 'border-container-darker':
                     (selectedValues[<?= (int)$attributeId ?>] !== item.id),
-                'w-6 h-6' : !isTextSwatch(<?= (int) $attributeId ?>, item.id),
+                'w-7 h-[18px] mr-[6px] md:w-[30px] md:h-6' : !isTextSwatch(<?= (int) $attributeId ?>, item.id),
                 'border-container-lighter ring ring-primary/75' : focusedLabel === item.id
             }"
             :style="getSwatchBackgroundStyle('<?= (int) $attributeId ?>',item.id)"

@@ -15,8 +15,16 @@
         }
     }
 
-    th, td {
-        @apply p-3;
+    th {
+        @apply pl-3 pr-[6px] pt-0;
+
+        @screen md {
+            @apply pr-3;
+        }
+    }
+
+    td {
+        @apply pl-0 py-3;
     }
 
     tr:nth-child(even) {

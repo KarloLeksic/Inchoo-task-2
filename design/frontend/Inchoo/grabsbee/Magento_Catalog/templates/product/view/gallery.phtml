@@ -45,7 +45,7 @@ $productName = $block->getProduct()->getName();
 <div id="gallery"
      x-data="initGallery()"
      x-bind="eventListeners"
-     class="w-full pt-6 md:pt-0 md:h-auto md:row-start-1 md:row-span-2 md:col-start-1"
+     class="w-full pt-11 px-3 sm:px-0 md:px-0 md:pt-0 md:h-auto md:row-start-1 md:row-span-2 md:col-start-1 order-1"
     >
     <div
         :class="{'w-full h-full fixed top-0 left-0 bg-white z-50 flex': fullscreen}"
@@ -75,7 +75,7 @@ $productName = $block->getProduct()->getName();
                 <img
                     alt="<?= $mainImage ? $escaper->escapeHtmlAttr($mainImage->getData('label')) : '' ?>"
                     title="<?= $mainImage ? $escaper->escapeHtmlAttr($mainImage->getData('label')) : '' ?>"
-                    class="object-contain object-center w-full h-auto max-h-screen-75"
+                    class="object-contain object-center "
                     :class="'invisible'"
                     src="<?= /* @noEscape */ $mainImageData ?>"
                     width="<?= /* @noEscape */ $mediumWidth ?>"
@@ -86,7 +86,8 @@ $productName = $block->getProduct()->getName();
                     <img
                         :alt="image.caption || '<?= $escaper->escapeJs($productName) ?>'"
                         :title="image.caption || '<?= $escaper->escapeJs($productName) ?>'"
-                        class="absolute inset-0 object-contain object-center w-full m-auto max-h-screen-75"
+                        class="absolute inset-0 object-contain object-center w-full"
+                        :class="fullscreen ? 'm-auto' : 'max-w-[685px]'"
                         width="<?= /* @noEscape */ $mediumWidth ?>"
                         height="<?= /* @noEscape */ $mediumHeight ?>"
                         :loading="active !== index ? 'lazy' : 'eager'"
@@ -152,12 +153,12 @@ $productName = $block->getProduct()->getName();
                      @scroll.debounce="calcPageSize(); calcActive()"
                 >
                     <template x-for="(image, index) in images" :key="index">
-                        <div class="js_thumbs_slide flex shrink-0 mb-2 mr-2 lg:mr-4 last:mr-0">
+                        <div class="js_thumbs_slide flex shrink-0 mb-0 mr-3 lg:mr-4 last:mr-0">
                             <button
                                 type="button"
                                 @click.prevent="setActive(index);"
-                                class="block border border-gray-300 hover:border-primary focus:border-primary"
-                                :class="{'border-primary': active === index}"
+                                class="block border border-transparent [&.active]:border-secondary hover:border-primary focus:border-secondary"
+                                :class="{'active': active === index}"
                             >
                                 <span class="sr-only">
                                     <?= $escaper->escapeHtml('View larger image') ?>

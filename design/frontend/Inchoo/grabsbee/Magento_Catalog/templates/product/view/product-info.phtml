@@ -29,45 +29,44 @@ $attributesViewModel = $viewModels->require(ProductAttributes::class);
 $product = $productViewModel->getProduct();
 
 ?>
-<div class="w-full mb-6">
-    <div class="my-2 flex">
-        <?= $block->getChildHtml('product.info.review') ?>
-    </div>
+<div class="w-full mb-0 order-3 px-3 sm:px-0 md:px-0">
 
-    <?php if ($shortDescription = $productViewModel->getShortDescription()) { ?>
-        <div class="mb-4 leading-relaxed product-description prose"><?= /* @noEscape */ $shortDescription ?></div>
-    <?php } ?>
-
-    <div class="flex flex-col sm:flex-row justify-between my-4">
+    <div class="flex flex-col sm:flex-row justify-between mt-5 md:mt-0">
         <?= $block->getChildHtml("product.info.stockstatus") ?>
         <?= $block->getChildHtml("alert.urls") ?>
     </div>
 
-    <div id="product-details">
+    <div id="product-details" class="mt-1 mb-4 text-primary">
         <?php foreach ($block->getAttributes() as $attributeConfig) {
             $attribute = $attributesViewModel->getAttributeFromLayoutConfig($attributeConfig); ?>
-            <?php if ($value = $attribute['value'] ?? null) { ?>
-                <div class="flex border-t border-gray-300 py-2 last:mb-6 last:border-b <?=/* @noEscape */ $attribute['value'] ?: "" ?>">
-                    <span class="w-1/2 text-left text-gray-700 product-detail-label">
-                        <?= $escaper->escapeHtml($attribute['label']) ?>
-                    </span>
-                    <span class="w-1/2 ml-2 text-left text-gray-900 product-detail-value">
-                        <?= $escaper->escapeHtml($value) ?>
-                    </span>
-                </div>
+            <?php if ($value = $attribute['value'] ?? null ) { ?>
+                <?php if ($attribute['label'] === "SKU") { ?>
+                    <div class=" <?=/* @noEscape */ $attribute['value'] ?: "" ?>">
+                        <span class="font-bold">
+                            <?= $escaper->escapeHtml($attribute['label']) ?>:
+                        </span>
+                        <span class="ml-1">
+                            <?= $escaper->escapeHtml($value) ?>
+                        </span>
+                    </div>
+                <?php } ?>
             <?php } ?>
         <?php } ?>
     </div>
 
+    <div class="my-6 flex">
+        <?= $block->getChildHtml('product.info.review') ?>
+    </div>
+
     <?= $block->getChildHtml('product.info.form') ?>
 
-    <div class="flex flex-col sm:flex-row items-end my-4">
+    <div class="flex flex-col md:flex-col md:gap-4">
 
         <div role="group" aria-label="<?= $escaper->escapeHtmlAttr('Price') ?>">
             <?= $block->getChildHtml("product.info.price") ?>
         </div>
 
-        <div class="flex mt-4 ml-auto sm:mt-0">
+        <div class="flex gap-5 md:gap-6 flex-col md:flex-row md:flex-row mt-4 sm:mt-0">
             <?php if ($product->isSaleable()): ?>
                 <?= $block->getChildHtml("product.info.quantity") ?>
                 <?= $block->getChildHtml("product.info.addtocart") ?>
@@ -77,23 +76,21 @@ $product = $productViewModel->getProduct();
     </div>
 
     <?php if ($product->isSaleable()): ?>
-        <div class="flex mt-4 justify-end">
+        <div class="flex">
             <?= $block->getChildHtml('addtocart.shortcut.buttons') ?>
         </div>
     <?php endif; ?>
 
-    <div class="flex mt-4 justify-end">
+    <div class="flex my-6">
         <?= $block->getChildHtml('product.info.addtowishlist'); ?>
         <?= $block->getChildHtml('product.info.addtocompare'); ?>
         <?= $block->getChildHtml('product.info.emailtofriend'); ?>
         <?= $block->getChildHtml('product.info.additional.actions'); ?>
     </div>
 
-    <?php if ($tierPriceBlock = $block->getChildHtml("product.price.tier")): ?>
-        <div class="py-4 my-2 tier-price-container">
-            <?= /** @noEscape */ $tierPriceBlock ?>
-        </div>
-    <?php endif; ?>
-
     <?= $block->getChildHtml("product.info.additional") ?>
+
+    <?php if ($shortDescription = $productViewModel->getShortDescription()) { ?>
+        <div class="mb-4 leading-relaxed product-description prose"><?= /* @noEscape */ $shortDescription ?></div>
+    <?php } ?>
 </div>

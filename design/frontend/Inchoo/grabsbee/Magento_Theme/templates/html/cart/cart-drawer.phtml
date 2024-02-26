@@ -56,7 +56,6 @@ $hyvaicons = $viewModels->require(SvgIcons::class);
                 if (this.maxItemsToDisplay > 0) {
                     this.cartItems = this.cartItems.slice(0, parseInt(this.maxItemsToDisplay, 10));
                 }
-                console.log(this.cartItems);
             },
             deleteItemFromCart(itemId) {
                 this.isLoading = true;

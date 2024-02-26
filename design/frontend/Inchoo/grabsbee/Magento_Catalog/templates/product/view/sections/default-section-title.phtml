@@ -10,13 +10,24 @@ declare(strict_types=1);
 
 use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\AbstractBlock;
+use Hyva\Theme\Model\ViewModelRegistry;
+use Hyva\Theme\ViewModel\SvgIcons;
 
 /** @var AbstractBlock $sectionBlock */
 /** @var Escaper $escaper */
+/** @var ViewModelRegistry $viewModels */
+
+/** @var SvgIcons $hyvaicons */
+$hyvaicons = $viewModels->require(SvgIcons::class);
 
 ?>
-<div class="container mx-auto flex pt-6 pb-3 mb-6 md:flex-row border-b-2 border-gray-300">
-    <h2 class="text-gray-900 text-2xl title-font font-base text-center md:text-left w-full">
+<div class="">
+    <h2 class="text-secondary font-body font-bold text-sm my-0 uppercase leading-6 md:text-base flex items-center justify-between py-2"
+        @click="toggle()"
+    >
         <?= $sectionBlock->getTitle() ? $escaper->escapeHtml($sectionBlock->getTitle()) : '&nbsp;' ?>
+        <span :class="open ? 'rotate-180' : ''">
+            <?= $hyvaicons->renderHtml('chevron-down', 'w-2'); ?>
+        </span>
     </h2>
 </div>
