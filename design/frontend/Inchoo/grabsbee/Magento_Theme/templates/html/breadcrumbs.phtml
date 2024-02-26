@@ -35,7 +35,7 @@ $hyvaicons = $viewModels->require(SvgIcons::class);
                 <?php endif; ?>
                 <?php if ($crumbInfo['link']): ?>
                     <a href="<?= $escaper->escapeUrl($crumbInfo['link']) ?>"
-                       class="no-underline text-secondary visited:text-secondary group-[:nth-last-child(1)]:text-text"
+                       class="no-underline leading-5 text-xs text-secondary visited:text-secondary group-[:nth-last-child(1)]:text-text"
                        title="<?= $escaper->escapeHtmlAttr($crumbInfo['title']) ?>"
                     ><?= $escaper->escapeHtml($crumbInfo['label']) ?></a>
                 <?php elseif (!$crumbInfo['last']): ?>

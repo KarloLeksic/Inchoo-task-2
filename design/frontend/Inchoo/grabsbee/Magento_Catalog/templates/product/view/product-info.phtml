@@ -36,7 +36,7 @@ $product = $productViewModel->getProduct();
         <?= $block->getChildHtml("alert.urls") ?>
     </div>
 
-    <div id="product-details" class="mt-1 mb-4 text-primary">
+    <div id="product-details" class="mt-1 mb-5 md:mb-6 text-primary">
         <?php foreach ($block->getAttributes() as $attributeConfig) {
             $attribute = $attributesViewModel->getAttributeFromLayoutConfig($attributeConfig); ?>
             <?php if ($value = $attribute['value'] ?? null ) { ?>
@@ -54,7 +54,7 @@ $product = $productViewModel->getProduct();
         <?php } ?>
     </div>
 
-    <div class="my-6 flex">
+    <div class="md:my-6 flex">
         <?= $block->getChildHtml('product.info.review') ?>
     </div>
 
@@ -66,7 +66,7 @@ $product = $productViewModel->getProduct();
             <?= $block->getChildHtml("product.info.price") ?>
         </div>
 
-        <div class="flex gap-5 md:gap-6 flex-col md:flex-row md:flex-row mt-4 sm:mt-0">
+        <div class="flex gap-5 md:gap-6 flex-col md:flex-row md:flex-row mt-6 sm:mt-0">
             <?php if ($product->isSaleable()): ?>
                 <?= $block->getChildHtml("product.info.quantity") ?>
                 <?= $block->getChildHtml("product.info.addtocart") ?>

@@ -50,7 +50,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                         @mouseenter="hoverPanelActiveId = '<?= /* @noEscape */ (string) $index ?>'"
                         @mouseleave="hoverPanelActiveId = 0"
                         @keyup.escape="hoverPanelActiveId = 0"
-                        style="text-shadow: 0 2px 5px black;"
+                        style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.60);"
                     >
                         <span class="mr-6 flex items-center py-4">
                             <a class="mr-2 w-full text-sm font-normal uppercase leading-5 tracking-widest text-white font-heading level- hover:underline"
@@ -142,7 +142,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                     </li>
                 <?php endforeach; ?>
                 <li class="block before:content-[''] mb-0 hover:text-white"
-                    style="text-shadow: 0 2px 5px black;"
+                    style="text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.60);"
                 >
                     <a href="<?= $escaper->escapeUrl($block->getUrl('contact')) ?>" class="text-sm font-normal uppercase leading-5 tracking-widest text-white font-heading visited:text-white hover:underline">
                         CONTACT us
