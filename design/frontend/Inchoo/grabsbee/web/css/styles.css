@@ -7128,8 +7128,17 @@ fieldset ~ fieldset{
     line-height: 1;
   }
 
+  .md\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:leading-8{
     line-height: 2rem;
+  }
+
+  .md\:leading-\[48px\]{
+    line-height: 48px;
   }
 }
 
