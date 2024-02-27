@@ -50,7 +50,7 @@ $productName = $block->getProduct()->getName();
         aria-label="<?= $escaper->escapeHtmlAttr(__('Customer Reviews')) ?>"
         tabindex="0"
     >
-        <div class="card w-full px-6 py-3">
+        <div class="card w-full px-3 py-3 md:px-0 md:container md:mx-auto">
             <?php foreach ($items as $review): ?>
                 <div itemscope itemprop="review" itemtype="http://schema.org/Review"
                      class="border-b pb-4 my-4 border-container last:border-0 last:mb-0">
@@ -121,7 +121,7 @@ $productName = $block->getProduct()->getName();
             <?php endforeach; ?>
         </div>
         <?php if ($toolbar): ?>
-            <div class="toolbar review-toolbar mt-4">
+            <div class="toolbar review-toolbar mt-4 px-3 md:px-0 md:container md:mx-auto">
                 <?= $toolbar->toHtml() ?>
             </div>
         <?php endif; ?>

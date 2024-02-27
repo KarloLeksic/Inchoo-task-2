@@ -92,6 +92,7 @@ $sectionIsOpen = '';
                 init() {
                     this.$refs.accordion.style.minHeight = null;
                     this.items = [...this.$refs.accordion.children];
+                    console.log(this.items);
                 },
                 openSectionItem(id) {
                     this.currentOpen = id;
