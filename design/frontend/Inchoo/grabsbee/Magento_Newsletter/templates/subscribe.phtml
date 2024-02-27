@@ -24,7 +24,7 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
 // on the Magento_ReCaptchaNewsletter module
 $recaptcha = $block->getData('viewModelRecaptcha');
 ?>
-<div class="p-5 sm:pb-5 sm:pt-0 bg-secondary px-3 order-1 md:px-0 sm:mt-12 md:max-w-[38.5rem]">
+<div class="p-5 sm:pb-5 sm:pt-0 bg-secondary px-3 order-1 md:px-0 sm:mt-12 md:max-w-[38.6rem]">
     <form
         class="form subscribe"
         action="<?= $escaper->escapeUrl($block->getFormActionUrl()) ?>"
@@ -58,7 +58,7 @@ $recaptcha = $block->getData('viewModelRecaptcha');
             >
             <?= $block->getBlockHtml('formkey') ?>
             <?= $recaptcha ? $recaptcha->getInputHtml(ReCaptcha::RECAPTCHA_FORM_ID_NEWSLETTER) : '' ?>
-            <button class="inline-flex w-full btn btn-primary btn-size-lg sm:w-[8.125rem">
+            <button class="inline-flex w-full btn btn-primary btn-size-lg sm:w-[8.125rem] leading-6 text-sm">
                 <?= $escaper->escapeHtml(__('Subscribe')) ?>
             </button>
         </div>

@@ -11,15 +11,9 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <css src="css/styles.css"/>
-        <font src="fonts/anton-v25-latin-regular.woff2"/>
-        <font src="fonts/open-sans-v40-latin-700.woff2"/>
-        <font src="fonts/open-sans-v40-latin-regular.woff2"/>
 
-        <!-- Works but no difference -->
-        <!-- <link src="fonts/anton-v25-latin-regular.woff2" as="style"-->
-        <!--   rel="stylesheet preload prefetch" type="text/css"/>-->
-
-        <!-- Won't work -->
-        <!-- <link rel="preload" href="fonts/anton-v25-latin-regular.woff2" as="font" type="font/woff2" crossorigin>-->
+        <link src="fonts/anton-v25-latin-regular.woff2" rel="preload" as="font" type="font/woff2" />
+        <link src="fonts/open-sans-v40-latin-700.woff2" rel="preload" as="font" type="font/woff2" />
+        <link src="fonts/open-sans-v40-latin-regular.woff2" rel="preload" as="font" type="font/woff2" />
     </head>
 </page>

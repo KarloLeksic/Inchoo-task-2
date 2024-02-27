@@ -6683,6 +6683,10 @@ fieldset ~ fieldset {
     width: 5.625;
   }
 
+  .sm\:w-\[8\.125rem\] {
+    width: 8.125rem;
+  }
+
   .sm\:table-fixed {
     table-layout: fixed;
   }
@@ -6972,6 +6976,10 @@ fieldset ~ fieldset {
 
   .md\:max-w-\[38\.5rem\] {
     max-width: 38.5rem;
+  }
+
+  .md\:max-w-\[38\.6rem\] {
+    max-width: 38.6rem;
   }
 
   .md\:shrink-0 {

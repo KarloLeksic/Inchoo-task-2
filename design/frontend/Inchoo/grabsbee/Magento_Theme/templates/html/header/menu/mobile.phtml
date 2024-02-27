@@ -132,7 +132,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                         <div class="my-2 flex items-center gap-2 text-xs uppercase leading-6 tracking-widest"
                                         >
                                             <?php if (!empty($subMenuItem['childData'])): ?>
-                                                <span @click="toggleSubmenu()" :class="openSubmenu ? 'rotate-45' : '' ">
+                                                <span @click="toggleSubmenu()" :class="openSubmenu ? 'rotate-45' : '' " class="cursor-pointer">
                                                     <?= $hyvaicons->renderHtml('close-menu', 'w-[0.75rem] h-[0.75rem] rotate-45'); ?>
                                                 </span>
                                             <?php else: ?>
