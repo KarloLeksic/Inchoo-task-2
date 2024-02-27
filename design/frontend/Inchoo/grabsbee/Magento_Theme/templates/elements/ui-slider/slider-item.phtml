@@ -11,7 +11,7 @@ use Magento\Framework\View\Element\Template;
 $item = $block->getData('item');
 
 ?>
-<div class="block h-[22.313] w-full relative md:h-[39rem]">
+<div class="block h-[22.313rem] w-full relative md:h-[39rem]">
     <img class="absolute h-full w-full object-cover" src="<?= $escaper->escapeHtmlAttr($item['image_url']) ?>"
          alt="<?= $escaper->escapeHtmlAttr($item['title']) ?>"
          width="<?= $escaper->escapeHtmlAttr($item['image_width'] ?? '1600') ?>"
