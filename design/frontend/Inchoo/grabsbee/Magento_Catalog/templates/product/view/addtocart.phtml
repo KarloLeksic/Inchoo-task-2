@@ -27,7 +27,7 @@ $heroicons = $viewModels->require(HeroiconsOutline::class);
         class="btn btn-primary sm:btn-size-lg"
         id="product-addtocart-button"
 >
-    <span class=""><?= $block->getData('is_cart_configure') ?
+    <span><?= $block->getData('is_cart_configure') ?
             $escaper->escapeHtml(__('Update item')) :
             $escaper->escapeHtml(__('Add to Cart')) ?>
     </span>

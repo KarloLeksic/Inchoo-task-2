@@ -33,7 +33,7 @@ if (!$product || !$product->getId()) {
 }
 ?>
 <?php if ($block->getParentBlock()->displayProductStockStatus()): ?>
-    <div class="">
+    <div>
         <?php if ($product->getIsSalable()): ?>
             <p class="text-primary"
                title="<?= $escaper->escapeHtmlAttr(__('Availability')) ?>">

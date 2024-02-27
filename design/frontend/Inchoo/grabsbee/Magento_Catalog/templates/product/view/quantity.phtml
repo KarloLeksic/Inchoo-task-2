@@ -73,8 +73,7 @@ $step = $stockItemViewModel->getQtyIncrements($product)
             };
         }
     </script>
-    <div x-data="initQtyField()"
-        class="">
+    <div x-data="initQtyField()">
         <?php if ($product->isSaleable()): ?>
             <div class="md:flex md:items-center">
                 <label for="qty[<?= (int)$product->getId() ?>]"

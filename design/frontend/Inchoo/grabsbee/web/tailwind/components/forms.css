@@ -11,7 +11,7 @@ label {
 }
 
 input[type='text'], input[type='email'], input[type='number'], select {
-    @apply border-tertiary-25 h-[42px];
+    @apply border-tertiary-25 h-[2.625rem];
 
     @screen md {
         @apply h-12;
@@ -41,7 +41,7 @@ input[type="radio"], input[type="checkbox"] {
 
 /* Style for the fake radio button */
 input[type="radio"] + label {
-    @apply relative inline-block cursor-pointer text-black pl-[22px];
+    @apply relative inline-block cursor-pointer text-black pl-[1.375rem];
 
     &::before {
         @apply content-[''] absolute left-0 top-2/4 -translate-y-1/2 w-4 h-4 rounded-full border border-tertiary-25 bg-white;
@@ -55,7 +55,7 @@ input[type="radio"]:checked + label:before {
 
 /* Style for the fake checkbox */
 input[type="checkbox"] + label {
-    @apply relative inline-block cursor-pointer text-black pl-[22px];
+    @apply relative inline-block cursor-pointer text-black pl-[1.375rem];
 
     &::before {
         @apply content-[''] absolute left-0 top-2/4 -translate-y-1/2 w-4 h-4 border border-tertiary-25 bg-white;
@@ -77,7 +77,7 @@ input[type="checkbox"]:checked + label:before {
 }
 
 input[type='search'] {
-    @apply pb-2 h-[42px] bg-transparent pl-[6px];
+    @apply pb-2 h-[2.625rem] bg-transparent pl-[0.375rem];
 
     &::placeholder {
         @apply text-sm leading-6 text-white;

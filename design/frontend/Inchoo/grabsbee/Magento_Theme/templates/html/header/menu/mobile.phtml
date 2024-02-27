@@ -114,13 +114,9 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                     <?php if (!empty($menuItem['childData'])): ?>
                         <div
                             data-child-id="<?= $escaper->escapeHtmLAttr($index) ?>"
-                            class=""
-                            :class=""
                             x-show="open"
                         >
                             <ul
-                                class=""
-                                :class=""
                                 aria-label="<?= $escaper->escapeHtmlAttr(__('Subcategories')) ?>"
                             >
                                 <?php foreach ($menuItem['childData'] as $subMenuItem): ?>
@@ -136,8 +132,8 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                         <div class="my-2 flex items-center gap-2 text-xs uppercase leading-6 tracking-widest"
                                         >
                                             <?php if (!empty($subMenuItem['childData'])): ?>
-                                                <span @click="toggleSubmenu()" class="" :class="openSubmenu ? 'rotate-45' : '' ">
-                                                    <?= $hyvaicons->renderHtml('close-menu', 'w-[12px] h-[12px] rotate-45'); ?>
+                                                <span @click="toggleSubmenu()" :class="openSubmenu ? 'rotate-45' : '' ">
+                                                    <?= $hyvaicons->renderHtml('close-menu', 'w-[0.75rem] h-[0.75rem] rotate-45'); ?>
                                                 </span>
                                             <?php else: ?>
                                             <span class="w-3">
@@ -148,7 +144,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                             <?php endif; ?>
 
                                             <a href="<?= $escaper->escapeUrl($subMenuItem['url']) ?>"
-                                               title="<?= $escaper->escapeHtmlAttr($subMenuItem['name']) ?>" class="">
+                                               title="<?= $escaper->escapeHtmlAttr($subMenuItem['name']) ?>">
                                                 <?= $escaper->escapeHtml($subMenuItem['name']) ?>
                                             </a>
                                         </div>
@@ -185,7 +181,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
         >
             Close
             <span x-bind:class="{ 'hidden': !open, 'block': open }" aria-hidden="true">
-                <?= $hyvaicons->renderHtml('close-menu', 'w-[12px] h-[12px]'); ?>
+                <?= $hyvaicons->renderHtml('close-menu', 'w-[0.75rem] h-[0.75rem]'); ?>
             </span>
         </button>
     </div>

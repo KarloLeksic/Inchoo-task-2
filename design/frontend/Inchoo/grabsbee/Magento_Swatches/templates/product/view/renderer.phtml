@@ -56,7 +56,6 @@ $tooltipBlockHtml = $block->getBlockHtml('product.swatch.tooltip');
     <div x-data="initConfigurableSwatchOptions_<?= (int) $productId ?>()"
          x-init="init(); initShowSwatchesIntersect();"
          @private-content-loaded.window="onGetCartData($event.detail.data)"
-         class=""
     >
         <div>
             <?php foreach ($attributes as $attribute): ?>
@@ -69,7 +68,7 @@ $tooltipBlockHtml = $block->getBlockHtml('product.swatch.tooltip');
                             <div class="flex flex-col w-full">
 
                                 <label
-                                    class="w-full sm:w-1/2 mb-0 text-left text-primary label product-option-label"
+                                    class="w-full sm:w-1/2 mb-0 text-left text-primary label product-option-label md:mb-2"
                                     id="attribute-label-<?= $escaper->escapeHtmlAttr($productId . '-' . $attributeId) ?>"
                                     aria-hidden="true"
                                 >

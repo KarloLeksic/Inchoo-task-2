@@ -68,7 +68,7 @@ $jsTemplate = 'Magento_Catalog::product/widget/viewed/js/recently-viewed-product
             <div class="relative w-full">
                 <div class="flex flex-col gap-4">
                     <template x-for="product in products">
-                        <div class="">
+                        <div>
                             <div class="card card-interactive">
                                 <?php if (in_array("image", $widgetAttributesToShow)): ?>
                                     <a :href="'<?= $escaper->escapeJs($escaper->escapeUrl($block->getBaseUrl())) ?>' +

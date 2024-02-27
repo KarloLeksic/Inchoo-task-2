@@ -14,5 +14,12 @@
         <font src="fonts/anton-v25-latin-regular.woff2"/>
         <font src="fonts/open-sans-v40-latin-700.woff2"/>
         <font src="fonts/open-sans-v40-latin-regular.woff2"/>
+
+        <!-- Works but no difference -->
+        <!-- <link src="fonts/anton-v25-latin-regular.woff2" as="style"-->
+        <!--   rel="stylesheet preload prefetch" type="text/css"/>-->
+
+        <!-- Won't work -->
+        <!-- <link rel="preload" href="fonts/anton-v25-latin-regular.woff2" as="font" type="font/woff2" crossorigin>-->
     </head>
 </page>

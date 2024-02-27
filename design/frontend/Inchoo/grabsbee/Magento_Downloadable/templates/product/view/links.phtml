@@ -136,7 +136,7 @@ $configuredLinks          = $configuredValues->getLinks() ?? [];
         <?php endforeach; ?>
         <?php if ($linksPurchasedSeparately && count($links) > 1): ?>
             <div class="field choice downloads-all">
-                <button type="button" class="" @click="toggleAll">
+                <button type="button" @click="toggleAll">
                     <?= $iconViewModel->checkCircleHtml('inline-flex w-6 h-6 mr-1', 26, 26) ?>
                     <span x-text="
                         areAllSelected()

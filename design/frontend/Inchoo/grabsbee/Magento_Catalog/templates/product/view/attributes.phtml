@@ -29,13 +29,13 @@ $product = $block->getProduct();
 ?>
 
 <?php if ($attributes = $block->getAdditionalData()): ?>
-    <div class="table-wrapper max-w-prose overflow-x-auto" id="product-attributes">
+    <div class="table-wrapper overflow-x-auto" id="product-attributes">
         <table class="additional-attributes w-full">
             <?php foreach ($attributes as $attribute): ?>
-                <tr class="">
-                    <th class="w-[92px]"
+                <tr>
+                    <th class="w-[5.75rem]"
                         scope="row"><?= $escaper->escapeHtml($attribute['label']) ?>:</th>
-                    <td class=""
+                    <td
                         data-th="<?= $escaper->escapeHtmlAttr($attribute['label']) ?>"
                     ><?= /* @noEscape */
                      $catalogOutputHelper->productAttribute($product, $attribute['value'], $attribute['code']) ?></td>

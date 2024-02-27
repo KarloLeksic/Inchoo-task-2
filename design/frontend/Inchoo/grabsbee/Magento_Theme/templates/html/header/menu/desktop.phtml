@@ -82,7 +82,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                             <?php endif; ?>
                         </span>
                         <?php if (!empty($menuItem['childData'])): ?>
-                            <div class="absolute left-0 z-10 block flex w-screen origin-top items-center justify-center bg-white transition-transform duration-500 top-[52px]"
+                            <div class="absolute left-0 z-10 block flex w-screen origin-top items-center justify-center bg-white transition-transform duration-500 top-[3.25rem]"
                                  :class="hoverPanelActiveId === '<?= /* @noEscape */ (string) $index ?>' ? 'scale-y-100' : 'scale-y-0'"
                             >
                                 <ul class="mt-4 ml-0 flex gap-8 pb-3">
@@ -103,7 +103,7 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                             <?php if (!empty($subMenuItem['childData'])): ?>
                                                 <ul class="mt-4 ml-0">
                                                     <?php foreach ($subMenuItem['childData'] as $thirdSubMenuItem): ?>
-                                                        <li class="before:content-[''] block max-w-[220px]">
+                                                        <li class="before:content-[''] block max-w-[13.75rem]">
                                                             <a
                                                                 href="<?= $escaper->escapeUrl($thirdSubMenuItem['url']) ?>"
                                                                 title="<?= $escaper->escapeHtmlAttr($thirdSubMenuItem['name']) ?>"

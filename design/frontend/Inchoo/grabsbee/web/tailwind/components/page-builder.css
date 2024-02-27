@@ -13,9 +13,6 @@
 [data-content-type='row'] {
     @apply box-border;
 
-    & > div {
-    }
-
     &[data-appearance='contained'] {
         @apply container;
         @apply box-border ml-auto mr-auto;

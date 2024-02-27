@@ -1,6 +1,6 @@
 @layer components {
     .btn {
-        @apply inline-flex items-center justify-center text-sm font-bold uppercase leading-6 tracking-wider gap-[6px] h-[42px];
+        @apply inline-flex items-center justify-center text-sm font-bold uppercase leading-6 tracking-wider gap-[0.375rem] h-[2.625rem];
 
         @screen md {
             @apply h-12 text-base leading-7 tracking-widest;
@@ -32,7 +32,7 @@
     }
 
     .btn-size-lg {
-        @apply w-[336px];
+        @apply w-[21rem];
     }
 
     .btn-size-sm {

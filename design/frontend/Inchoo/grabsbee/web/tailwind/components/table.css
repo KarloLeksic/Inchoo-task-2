@@ -16,7 +16,7 @@
     }
 
     th {
-        @apply pl-3 pr-[6px] pt-0;
+        @apply pl-3 pr-[0.375rem] pt-0;
 
         @screen md {
             @apply pr-3;
