@@ -4269,8 +4269,8 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   height: 10.5;
 }
 
-.h-\[22\.313\] {
-  height: 22.313;
+.h-\[22\.313rem\] {
+  height: 22.313rem;
 }
 
 .h-\[6\.25rem\] {
@@ -4283,10 +4283,6 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
 
 .h-full {
   height: 100%;
-}
-
-.h-\[22\.313rem\] {
-  height: 22.313rem;
 }
 
 .max-h-screen {
@@ -4417,8 +4413,8 @@ a.pagebuilder-button-secondary.btn-disabled, button.pagebuilder-button-secondary
   width: 21rem;
 }
 
-.w-\[25\.625\] {
-  width: 25.625;
+.w-\[25\.625rem\] {
+  width: 25.625rem;
 }
 
 .w-\[4\.875rem\] {
@@ -6273,6 +6269,10 @@ fieldset ~ fieldset {
   color: rgb(236 29 46 );
 }
 
+.visited\:text-text:visited {
+  color: rgb(78 78 78 );
+}
+
 .visited\:text-white:visited {
   color: rgb(255 255 255 );
 }
@@ -6365,6 +6365,11 @@ fieldset ~ fieldset {
 .hover\:text-red-600:hover {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
+}
+
+.hover\:text-text:hover {
+  --tw-text-opacity: 1;
+  color: rgb(78 78 78 / var(--tw-text-opacity));
 }
 
 .hover\:text-white:hover {
@@ -6972,10 +6977,6 @@ fieldset ~ fieldset {
 
   .md\:w-full {
     width: 100%;
-  }
-
-  .md\:max-w-\[38\.5rem\] {
-    max-width: 38.5rem;
   }
 
   .md\:max-w-\[38\.6rem\] {

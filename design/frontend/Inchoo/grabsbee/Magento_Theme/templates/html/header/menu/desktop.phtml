@@ -6,6 +6,7 @@ use Hyva\Theme\ViewModel\Navigation;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\Escaper;
 use Hyva\Theme\ViewModel\SvgIcons;
+use Hyva\Theme\ViewModel\StoreConfig;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
@@ -25,6 +26,15 @@ $uniqueId = '_' . uniqid();
 // Order is important here: 1. build the menu data, 2. then set the cache tags from the view model identities
 $menuItems = $viewModelNavigation->getNavigation(4);
 $block->setData('cache_tags', $viewModelNavigation->getIdentities());
+
+$storeConfig = $viewModels->require(StoreConfig::class);
+
+$storeConfig = $viewModels->require(StoreConfig::class);
+$storePhoneNumber = $storeConfig->getStoreConfig('general/store_information/phone') ?? '';
+$storeEmail = $storeConfig->getStoreConfig('trans_email/ident_general/email') ?? '';
+$storeAddress = $storeConfig->getStoreConfig('general/store_information/street_line1');
+$postalCode = $storeConfig->getStoreConfig('general/store_information/postcode');
+$city = $storeConfig->getStoreConfig('general/store_information/city');
 ?>
 <div x-data="initMenuDesktop<?= $escaper->escapeHtml($uniqueId) ?>()"
      class="relative z-20 hidden navigation bg-secondary lg:flex"
@@ -116,17 +126,35 @@ $block->setData('cache_tags', $viewModelNavigation->getIdentities());
                                     >
                                         <a href="#" class="text-sm font-bold uppercase leading-5 tracking-widest text-black hover:underline visited:text-black">Contact Us</a>
                                         <ul class="mt-4 ml-0 text-text">
-                                            <li class="before:content-[''] flex items-center gap-0 mb-0">
-                                                <?= $hyvaicons->renderHtml('location', 'w-3 mr-2'); ?>
-                                                Trg slobode 6
+                                            <li class="before:content-[''] gap-0 mb-0">
+                                                <a class="flex items-center text-text visited:text-text hover:text-text hover:underline"
+                                                   href="
+                                                    <?=
+                                                   'https://www.google.com/maps/place/' .
+                                                   str_replace(' ', '+', $storeAddress) .
+                                                   ',+' .
+                                                   $postalCode .
+                                                   ',+' .
+                                                   $city
+                                                   ?>
+                                                    ">
+                                                    <?= $hyvaicons->renderHtml('location', 'w-3 mr-2'); ?>
+                                                    <?= $escaper->escapeHtml($storeAddress) ?>
+                                                </a>
                                             </li>
                                             <li class="before:content-[''] flex items-center gap-0 mb-0">
-                                                <?= $hyvaicons->renderHtml('phone', 'w-3 mr-2'); ?>
-                                                +385958811630
+                                                <a class="flex items-center gap-0 text-text hover:text-text visited:text-text hover:underline"
+                                                   href="tel:<?= $escaper->escapeHtmlAttr(preg_replace("/[^0-9+]/", "", $storePhoneNumber)) ?>">
+                                                    <?= $hyvaicons->renderHtml('phone', 'w-3 mr-2'); ?>
+                                                    <?= $escaper->escapeHtml($storePhoneNumber); ?>
+                                                </a>
                                             </li>
                                             <li class="before:content-[''] flex items-center gap-0">
-                                                <?= $hyvaicons->renderHtml('mail', 'w-3 mr-2'); ?>
-                                                filip.svetlicic@gmail.com
+                                                <a href="<?= 'mailto:' . $storeEmail ?>"
+                                                   class="flex items-center gap-0 text-text hover:text-text visited:text-text hover:underline">
+                                                    <?= $hyvaicons->renderHtml('mail', 'w-3 mr-2'); ?>
+                                                    <?= $escaper->escapeHtml($storeEmail) ?>
+                                                </a>
                                             </li>
                                         </ul>
                                     </li>

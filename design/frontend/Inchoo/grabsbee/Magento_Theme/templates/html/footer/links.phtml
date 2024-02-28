@@ -7,6 +7,7 @@ use Magento\Framework\Escaper;
 use Magento\Framework\View\Element\Template;
 use Hyva\Theme\ViewModel\SvgIcons;
 use Hyva\Theme\ViewModel\Navigation;
+use Hyva\Theme\ViewModel\StoreConfig;
 
 /** @var Template $block */
 /** @var Escaper $escaper */
@@ -17,6 +18,13 @@ $hyvaicons = $viewModels->require(SvgIcons::class);
 
 /** @var Navigation $viewModelNavigation */
 $viewModelNavigation = $viewModels->require(Navigation::class, $block);
+$storeConfig = $viewModels->require(StoreConfig::class);
+
+$storePhoneNumber = $storeConfig->getStoreConfig('general/store_information/phone') ?? '';
+$storeAddress = $storeConfig->getStoreConfig('general/store_information/street_line1');
+$storeEmail = $storeConfig->getStoreConfig('trans_email/ident_general/email');
+$postalCode = $storeConfig->getStoreConfig('general/store_information/postcode');
+$city = $storeConfig->getStoreConfig('general/store_information/city');
 
 $menuItems = $viewModelNavigation->getNavigation(1);
 ?>
@@ -51,17 +59,35 @@ $menuItems = $viewModelNavigation->getNavigation(1);
             <ul class="my-3 ml-4 sm:ml-0 ml-0 text-white"
                 x-show="open"
             >
-                <li class="before:content-[''] flex items-center gap-0 mb-0">
-                    <?= $hyvaicons->renderHtml('location', 'w-3 mr-2 fill-white'); ?>
-                    Trg slobode 6
+                <li class="before:content-[''] mb-0">
+                    <a class="flex items-center gap-0 text-white hover:text-white visited:text-white hover:underline"
+                       href="
+                           <?=
+                               'https://www.google.com/maps/place/' .
+                                str_replace(' ', '+', $storeAddress) .
+                               ',+' .
+                               $postalCode .
+                               ',+' .
+                               $city
+                           ?>
+                    ">
+                        <?= $hyvaicons->renderHtml('location', 'w-3 mr-2 fill-white'); ?>
+                        <?= $escaper->escapeHtml($storeAddress) ?>
+                    </a>
                 </li>
-                <li class="before:content-[''] flex items-center gap-0 mb-0">
-                    <?= $hyvaicons->renderHtml('phone', 'w-3 mr-2 fill-white'); ?>
-                    +385958811630
+                <li class="before:content-[''] mb-0">
+                    <a class="flex items-center gap-0 text-white hover:text-white visited:text-white hover:underline"
+                       href="tel:<?= $escaper->escapeHtmlAttr(preg_replace("/[^0-9+]/", "", $storePhoneNumber)) ?>">
+                        <?= $hyvaicons->renderHtml('phone', 'w-3 mr-2 fill-white'); ?>
+                        <?= $escaper->escapeHtml($storePhoneNumber); ?>
+                    </a>
                 </li>
-                <li class="before:content-[''] flex items-center gap-0 mb-0">
-                    <?= $hyvaicons->renderHtml('mail', 'w-3 mr-2 fill-white'); ?>
-                    filip.svetlicic@gmail.com
+                <li class="before:content-[''] mb-0">
+                    <a href="<?= 'mailto:' . $storeEmail ?>"
+                       class="flex items-center gap-0 text-white hover:text-white visited:text-white hover:underline">
+                        <?= $hyvaicons->renderHtml('mail', 'w-3 mr-2 fill-white'); ?>
+                        <?= $escaper->escapeHtml($storeEmail) ?>
+                    </a>
                 </li>
             </ul>
         </div>
