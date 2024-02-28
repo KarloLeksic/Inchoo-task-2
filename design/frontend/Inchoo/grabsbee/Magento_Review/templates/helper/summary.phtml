@@ -25,9 +25,6 @@ $uniqueId = $productId . uniqid();
         @click="scrollToRatings()"
         class="rating-summary flex"
         :class="{'cursor-pointer' : reviewsSection}"
-        <?php if (!$rating): ?>
-            title="<?= $escaper->escapeHtmlAttr(__('Be the first to review this product')) ?>"
-        <?php endif; ?>
         <?php if ($reviewCount): ?>
             itemprop="aggregateRating"
             itemscope
@@ -107,7 +104,7 @@ $uniqueId = $productId . uniqid();
             <?php endwhile; ?>
         <?php else: ?>
             <div>
-                <p class="text-link text-xs sm:text-sm leading-5">
+                <p class="text-link text-xs sm:text-sm leading-5 hover:underline">
                     <?= $escaper->escapeHtmlAttr(__('Be the first to review this product')) ?>
                 </p>
             </div>

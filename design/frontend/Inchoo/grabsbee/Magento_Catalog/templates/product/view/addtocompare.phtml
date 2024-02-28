@@ -67,7 +67,7 @@ if (!$product->getId() || !$compareViewModel->showOnProductPage()) {
         title="<?= $escaper->escapeHtmlAttr(__('Add to Compare')) ?>"
         aria-label="<?= $escaper->escapeHtmlAttr(__('Add to Compare')) ?>"
         id="add-to-compare"
-        class="flex items-center text-primary text-[0.625rem] md:text-xs leading-5">
+        class="flex items-center text-primary text-[0.625rem] md:text-xs leading-5 hover:underline">
     <?= $hyvaicons->renderHtml('compare', 'w-[0.438rem] mr-1'); ?>
     <?= $escaper->escapeHtml(__('Add to Compare')) ?>
 </button>

@@ -26,7 +26,7 @@ $sectionIsOpen = '';
         <template x-for="tab in items">
             <button
                 type="button"
-                class="text-secondary font-bold capitalize"
+                class="text-secondary font-bold capitalize hover:underline"
                 :aria-expanded="sectionItemIsOpen(tab.id)"
                 :aria-controls="tab.id"
                 @click="openSectionItem(tab.id)"
