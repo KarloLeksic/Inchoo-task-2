@@ -1,10 +1,4 @@
 <?php
-/**
- * Hyvä Themes - https://hyva.io
- * Copyright © Hyvä Themes 2020-present. All rights reserved.
- * This product is licensed per Magento install
- * See https://hyva.io/license
- */
 
 declare(strict_types=1);
 
@@ -36,7 +30,7 @@ $menuItems = $viewModelNavigation->getNavigation(1);
              @click="window.location.href = '<?= $menuItem['url']; ?>'"
         >
             <img src="<?= $menuItem['image']; ?>"
-                 alt="<?= $escaper->escapeHtml($menuItem['name']) ?>"
+                 alt="<?= $escaper->escapeHtmlAttr($menuItem['name']) ?>"
                  class="w-[21rem] h-[10.5] sm:h-[11.875rem] object-cover "
                  width="336"
                  height="168"
